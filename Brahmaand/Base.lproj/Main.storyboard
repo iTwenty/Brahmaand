@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Lsa-tU-Qo2">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -12,7 +12,7 @@
         <!--Apod View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ApodViewController" customModule="Brahmaand" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ApodViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="ApodViewController" customModule="Brahmaand" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -21,17 +21,17 @@
                                 <rect key="frame" x="20" y="44" width="374" height="818"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="zgL-pQ-WBz" userLabel="Image Details Stack">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="438"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="424"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aIj-G3-KaD" userLabel="Apod Image">
-                                                <rect key="frame" x="0.0" y="0.0" width="374" height="214"/>
+                                                <rect key="frame" x="87" y="0.0" width="200" height="200"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="374" placeholder="YES" id="2A4-Je-V4e"/>
-                                                    <constraint firstAttribute="height" constant="214" placeholder="YES" id="PQ6-Dt-Wue"/>
+                                                    <constraint firstAttribute="width" constant="200" id="2A4-Je-V4e"/>
+                                                    <constraint firstAttribute="height" constant="200" id="PQ6-Dt-Wue"/>
                                                 </constraints>
                                             </imageView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="hjx-l1-0cL" userLabel="Title Details Stack">
-                                                <rect key="frame" x="1" y="224" width="372.5" height="214"/>
+                                                <rect key="frame" x="1" y="210" width="372.5" height="214"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="APOD Title" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2lG-JM-1Kz" userLabel="Apod Title">
                                                         <rect key="frame" x="0.0" y="0.0" width="372.5" height="20.5"/>
@@ -83,6 +83,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="141" y="117"/>
+        </scene>
+        <!--Apod Page View Controller-->
+        <scene sceneID="sJV-4F-7vJ">
+            <objects>
+                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="pageCurl" navigationOrientation="horizontal" spineLocation="min" id="Lsa-tU-Qo2" customClass="ApodPageViewController" customModule="Brahmaand" customModuleProvider="target" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Lb0-hl-mOr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-710" y="102"/>
         </scene>
     </scenes>
     <resources>

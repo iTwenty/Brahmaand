@@ -15,24 +15,21 @@ class ApodViewController: UIViewController {
     @IBOutlet weak var apodTitleLabel: UILabel!
     @IBOutlet weak var apodExplanationTextView: UITextView!
 
-    private var apodNetwork: ApodNetwork?
     private var apod: Apod?
+    var index: Int?
+
+    static func fromStoryBoard(apod: Apod, index: Int) -> ApodViewController {
+        let sb = UIStoryboard(name: "Main", bundle: .main)
+        let vc: ApodViewController = sb.instantiateViewController(identifier: "ApodViewController")
+        vc.apod = apod
+        vc.index = index
+        return vc
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         resetViews()
-        apodNetwork = ApodApiNetwork()
-        apodNetwork?.fetchApod(forDate: Date()) { [weak self] (result) in
-            switch result {
-            case .success(let apod):
-                DispatchQueue.main.async {
-                    self?.apod = apod
-                    self?.showApod()
-                }
-            case .failure(let error):
-                print(error)
-            }
-        }
+        self.showApod()
     }
 
     private func resetViews() {
@@ -43,7 +40,15 @@ class ApodViewController: UIViewController {
 
     private func showApod() {
         guard let apod = self.apod else { return }
-        self.apodImageView.kf.setImage(with: apod.url)
+        let processor = DownsamplingImageProcessor(size: apodImageView.bounds.size)
+            |> RoundCornerImageProcessor(cornerRadius: 20)
+        apodImageView.kf.indicatorType = .activity
+        apodImageView.kf.setImage(
+            with: apod.url,
+            options: [.processor(processor),
+                      .scaleFactor(UIScreen.main.scale),
+                      .transition(.fade(1)),
+                      .cacheOriginalImage])
         self.apodTitleLabel.text = apod.title
         self.apodExplanationTextView.text = apod.explanation
     }
