@@ -24,7 +24,7 @@ class ApodPageViewController: UIPageViewController {
                 DispatchQueue.main.async {
                     self?.apods = apods
                     guard let latest = self?.apods.last else { return }
-                    let apodVc = ApodViewController.fromStoryBoard(apod: latest, index: apods.endIndex)
+                    let apodVc = ApodViewController.fromStoryBoard(apod: latest, index: apods.endIndex - 1)
                     self?.setViewControllers([apodVc], direction: .reverse, animated: true, completion: nil)
                 }
             case .failure(let error):

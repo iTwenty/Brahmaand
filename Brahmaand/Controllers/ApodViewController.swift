@@ -62,7 +62,7 @@ class ApodViewController: UIViewController {
     private func setBackgroundColor(fromImage image: UIImage) {
         image.getColors { [weak self] (colors) in
             guard let colors = colors else { return }
-            UIView.animate(withDuration: 0.5) {
+            UIView.animate(withDuration: 0.1) {
                 self?.view.backgroundColor = colors.background
                 self?.apodTitleLabel.textColor = colors.primary
                 self?.apodExplanationTextView.textColor = colors.detail

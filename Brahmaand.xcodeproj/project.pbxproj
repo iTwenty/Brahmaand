@@ -94,7 +94,6 @@
 			isa = PBXGroup;
 			children = (
 				63D84A4B2609FF2A00796D25 /* ApodApiNetwork.swift */,
-				63D84A472609FCDD00796D25 /* Apod.swift */,
 				6365FBAB260B3B18003C9ED5 /* ErrorResponse.swift */,
 			);
 			path = ApodApi;
@@ -147,6 +146,7 @@
 			children = (
 				6365FBAF260B3BCE003C9ED5 /* ApodApi */,
 				63D84A52260A027A00796D25 /* Utilities */,
+				63D84A472609FCDD00796D25 /* Apod.swift */,
 				63D84A432609FCB500796D25 /* ApodNetwork.swift */,
 			);
 			path = Models;
