@@ -89,3 +89,5 @@ fastlane/test_output
 
 iOSInjectionProject/
 
+# macOS files to ignore
+.DS_Store

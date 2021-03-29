@@ -41,15 +41,32 @@ class ApodViewController: UIViewController {
     private func showApod() {
         guard let apod = self.apod else { return }
         let processor = DownsamplingImageProcessor(size: apodImageView.bounds.size)
-            |> RoundCornerImageProcessor(cornerRadius: 20)
         apodImageView.kf.indicatorType = .activity
         apodImageView.kf.setImage(
             with: apod.url,
             options: [.processor(processor),
                       .scaleFactor(UIScreen.main.scale),
                       .transition(.fade(1)),
-                      .cacheOriginalImage])
+                      .cacheOriginalImage]) { [weak self] (result) in
+            switch result {
+            case .success(let value):
+                self?.setBackgroundColor(fromImage: value.image)
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
         self.apodTitleLabel.text = apod.title
         self.apodExplanationTextView.text = apod.explanation
+    }
+
+    private func setBackgroundColor(fromImage image: UIImage) {
+        image.getColors { [weak self] (colors) in
+            guard let colors = colors else { return }
+            UIView.animate(withDuration: 0.5) {
+                self?.view.backgroundColor = colors.background
+                self?.apodTitleLabel.textColor = colors.primary
+                self?.apodExplanationTextView.textColor = colors.detail
+            }
+        }
     }
 }

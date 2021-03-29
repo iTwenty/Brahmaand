@@ -15,6 +15,7 @@ class ApodPageViewController: UIPageViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.dataSource = self
+        self.delegate = self
         apodNetwork = ApodApiNetwork()
         guard let start = Calendar.current.date(byAdding: .month, value: -1, to: Date()) else { return }
         apodNetwork?.fetchApods(startDate: start, endDate: Date()) { [weak self] (result) in
@@ -61,4 +62,8 @@ extension ApodPageViewController: UIPageViewControllerDataSource {
         let apodVc = ApodViewController.fromStoryBoard(apod: apods[afterIndex], index: afterIndex)
         return apodVc
     }
+}
+
+extension ApodPageViewController: UIPageViewControllerDelegate {
+
 }
