@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol ApodNetwork {
+protocol ApodFetcher {
 
     func fetchApod(forDate date: Date, completion: @escaping (Result<Apod, Error>) -> ())
     func fetchApods(startDate: Date, endDate: Date, completion: @escaping (Result<[Apod], Error>) -> ())

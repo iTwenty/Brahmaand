@@ -15,9 +15,9 @@
 		63D84A0E2609F69700796D25 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63D84A0D2609F69700796D25 /* Assets.xcassets */; };
 		63D84A112609F69700796D25 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63D84A0F2609F69700796D25 /* LaunchScreen.storyboard */; };
 		63D84A1C2609F69800796D25 /* BrahmaandTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D84A1B2609F69800796D25 /* BrahmaandTests.swift */; };
-		63D84A442609FCB500796D25 /* ApodNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D84A432609FCB500796D25 /* ApodNetwork.swift */; };
+		63D84A442609FCB500796D25 /* ApodFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D84A432609FCB500796D25 /* ApodFetcher.swift */; };
 		63D84A482609FCDD00796D25 /* Apod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D84A472609FCDD00796D25 /* Apod.swift */; };
-		63D84A4C2609FF2A00796D25 /* ApodApiNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D84A4B2609FF2A00796D25 /* ApodApiNetwork.swift */; };
+		63D84A4C2609FF2A00796D25 /* ApodApiFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D84A4B2609FF2A00796D25 /* ApodApiFetcher.swift */; };
 		63D84A54260A029300796D25 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D84A53260A029300796D25 /* Extensions.swift */; };
 		63D84A5E260A08E200796D25 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D84A5D260A08E200796D25 /* Constants.swift */; };
 		C0A480CA260F8D0200FE2756 /* ApodPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A480C9260F8D0200FE2756 /* ApodPageViewController.swift */; };
@@ -46,9 +46,9 @@
 		63D84A172609F69800796D25 /* BrahmaandTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BrahmaandTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		63D84A1B2609F69800796D25 /* BrahmaandTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrahmaandTests.swift; sourceTree = "<group>"; };
 		63D84A1D2609F69800796D25 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		63D84A432609FCB500796D25 /* ApodNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApodNetwork.swift; sourceTree = "<group>"; };
+		63D84A432609FCB500796D25 /* ApodFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApodFetcher.swift; sourceTree = "<group>"; };
 		63D84A472609FCDD00796D25 /* Apod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Apod.swift; sourceTree = "<group>"; };
-		63D84A4B2609FF2A00796D25 /* ApodApiNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApodApiNetwork.swift; sourceTree = "<group>"; };
+		63D84A4B2609FF2A00796D25 /* ApodApiFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApodApiFetcher.swift; sourceTree = "<group>"; };
 		63D84A53260A029300796D25 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		63D84A5D260A08E200796D25 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		C0A480C9260F8D0200FE2756 /* ApodPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApodPageViewController.swift; sourceTree = "<group>"; };
@@ -93,7 +93,7 @@
 		6365FBAF260B3BCE003C9ED5 /* ApodApi */ = {
 			isa = PBXGroup;
 			children = (
-				63D84A4B2609FF2A00796D25 /* ApodApiNetwork.swift */,
+				63D84A4B2609FF2A00796D25 /* ApodApiFetcher.swift */,
 				6365FBAB260B3B18003C9ED5 /* ErrorResponse.swift */,
 			);
 			path = ApodApi;
@@ -147,7 +147,7 @@
 				6365FBAF260B3BCE003C9ED5 /* ApodApi */,
 				63D84A52260A027A00796D25 /* Utilities */,
 				63D84A472609FCDD00796D25 /* Apod.swift */,
-				63D84A432609FCB500796D25 /* ApodNetwork.swift */,
+				63D84A432609FCB500796D25 /* ApodFetcher.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -268,13 +268,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				63D84A4C2609FF2A00796D25 /* ApodApiNetwork.swift in Sources */,
+				63D84A4C2609FF2A00796D25 /* ApodApiFetcher.swift in Sources */,
 				63D84A54260A029300796D25 /* Extensions.swift in Sources */,
 				63D84A092609F69500796D25 /* ApodViewController.swift in Sources */,
 				63D84A482609FCDD00796D25 /* Apod.swift in Sources */,
 				63D84A5E260A08E200796D25 /* Constants.swift in Sources */,
 				C0A480CA260F8D0200FE2756 /* ApodPageViewController.swift in Sources */,
-				63D84A442609FCB500796D25 /* ApodNetwork.swift in Sources */,
+				63D84A442609FCB500796D25 /* ApodFetcher.swift in Sources */,
 				63D84A052609F69500796D25 /* AppDelegate.swift in Sources */,
 				6365FBAC260B3B18003C9ED5 /* ErrorResponse.swift in Sources */,
 				C0A480CE2610900500FE2756 /* UIImageColors.swift in Sources */,

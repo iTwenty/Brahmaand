@@ -9,16 +9,16 @@ import UIKit
 
 class ApodPageViewController: UIPageViewController {
 
-    private var apodNetwork: ApodNetwork?
+    private var apodFetcher: ApodFetcher?
     private var apods: [Apod] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.dataSource = self
         self.delegate = self
-        apodNetwork = ApodApiNetwork()
+        apodFetcher = ApodApiFetcher()
         guard let start = Calendar.current.date(byAdding: .month, value: -1, to: Date()) else { return }
-        apodNetwork?.fetchApods(startDate: start, endDate: Date()) { [weak self] (result) in
+        apodFetcher?.fetchApods(startDate: start, endDate: Date()) { [weak self] (result) in
             switch result {
             case .success(let apods):
                 DispatchQueue.main.async {

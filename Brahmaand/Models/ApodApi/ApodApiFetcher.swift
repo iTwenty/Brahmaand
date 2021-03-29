@@ -16,7 +16,7 @@ enum ApiError: Error {
 let apiKey = "4UaeSwbkBvlM4x9Bxuu02HefDlpyPgHbP1NbA9F4"
 let baseUrl = "https://api.nasa.gov/planetary/apod"
 
-final class ApodApiNetwork: ApodNetwork {
+final class ApodApiFetcher: ApodFetcher {
 
     let decoder: JSONDecoder = {
         let decoder = JSONDecoder()
