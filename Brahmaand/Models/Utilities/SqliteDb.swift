@@ -11,6 +11,7 @@ enum SqliteError: Error {
     case bindError(_ str: String)
     case stepError(_ str: String)
     case finalizeError(_ str: String)
+    case destroyError(_ str: String)
 }
 
 import Foundation
@@ -26,26 +27,32 @@ public struct SqliteDb {
         String(cString: sqlite3_errmsg(db))
     }
 
-    public init(databaseName: String) throws {
+    public init(databaseName: String, createQueries: [String]) throws {
         self.databaseName = databaseName
         self.queue = DispatchQueue(label: "com.github.itwenty.brahmaand.sqlite_queue",
                                    qos: .utility,
                                    attributes: .concurrent)
-        self.db = try initStorage()
+        self.db = try initStorage(createQueries)
     }
 
-    private mutating func initStorage() throws -> OpaquePointer? {
+    private mutating func initStorage(_ createQueries: [String]) throws -> OpaquePointer? {
         let fileURL = try getStoragePath()
-        guard sqlite3_open(fileURL.path, &db) == SQLITE_OK else {
-            throw SqliteError.openError(latestErrorString)
+        if FileManager.default.fileExists(atPath: fileURL.path) {
+            // Here, sqlite3_open will open connection to existing DB
+            guard sqlite3_open(fileURL.path, &db) == SQLITE_OK else {
+                throw SqliteError.openError(latestErrorString)
+            }
+        } else {
+            // Here, sqlite3_open will create new DB file and open connection to it
+            guard sqlite3_open(fileURL.path, &db) == SQLITE_OK else {
+                throw SqliteError.openError(latestErrorString)
+            }
+            for query in createQueries {
+                try self.executeQuery(queryString: query)
+            }
         }
-        return db
-    }
 
-    public func createTable(createTableString: String) throws {
-        try queue.sync(flags: .barrier) {
-            try executeQuery(queryString: createTableString)
-        }
+        return db
     }
 
     public func insert(insertString: String, parameters: [Any?]) throws {
@@ -80,12 +87,6 @@ public struct SqliteDb {
             guard sqlite3_finalize(queryStatement) == SQLITE_OK else {
                 throw SqliteError.finalizeError(latestErrorString)
             }
-        }
-    }
-
-    public func delete(deleteString: String) throws {
-        try queue.sync(flags: .barrier) {
-            try executeQuery(queryString: deleteString)
         }
     }
 
@@ -149,20 +150,33 @@ public struct SqliteDb {
         return dataArray
     }
 
-    public func destroyStorage() {
-        try? FileManager.default.removeItem(atPath: getStoragePath().path)
+    fileprivate func executeQuery(queryString: String) throws {
+        try queue.sync {
+            var queryStatement: OpaquePointer?
+            guard sqlite3_prepare_v2(db, queryString, -1, &queryStatement, nil) == SQLITE_OK else {
+                throw SqliteError.prepareError(latestErrorString)
+            }
+            guard sqlite3_step(queryStatement) == SQLITE_DONE else {
+                throw SqliteError.stepError(latestErrorString)
+            }
+            guard sqlite3_finalize(queryStatement) == SQLITE_OK else {
+                throw SqliteError.finalizeError(latestErrorString)
+            }
+        }
     }
 
-    fileprivate func executeQuery(queryString: String) throws {
-        var queryStatement: OpaquePointer?
-        guard sqlite3_prepare_v2(db, queryString, -1, &queryStatement, nil) == SQLITE_OK else {
-            throw SqliteError.prepareError(latestErrorString)
-        }
-        guard sqlite3_step(queryStatement) == SQLITE_DONE else {
-            throw SqliteError.stepError(latestErrorString)
-        }
-        guard sqlite3_finalize(queryStatement) == SQLITE_OK else {
-            throw SqliteError.finalizeError(latestErrorString)
+    func destroyStorage() throws {
+        try queue.sync {
+            let dbFilePaths = try ["", "-journal", "-wal", "-shm"].map { try getStoragePath().path.appending($0) }
+            for dbFilePath in dbFilePaths {
+                if FileManager.default.fileExists(atPath: dbFilePath) {
+                    try FileManager.default.removeItem(atPath: dbFilePath)
+                }
+
+                if FileManager.default.fileExists(atPath: dbFilePath) {
+                    throw SqliteError.destroyError("File \(dbFilePath) not deleted!")
+                }
+            }
         }
     }
 
