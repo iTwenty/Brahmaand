@@ -9,28 +9,11 @@ import UIKit
 
 class ApodPageViewController: UIPageViewController {
 
-    private var apodFetcher: ApodFetcher?
-    private var apods: [Apod] = []
-
     override func viewDidLoad() {
         super.viewDidLoad()
         self.dataSource = self
-        self.delegate = self
-        apodFetcher = ApodApiFetcher()
-        guard let start = Calendar.current.date(byAdding: .month, value: -1, to: Date()) else { return }
-        apodFetcher?.fetchApods(startDate: start, endDate: Date()) { [weak self] (result) in
-            switch result {
-            case .success(let apods):
-                DispatchQueue.main.async {
-                    self?.apods = apods
-                    guard let latest = self?.apods.last else { return }
-                    let apodVc = ApodViewController.fromStoryBoard(apod: latest, index: apods.endIndex - 1)
-                    self?.setViewControllers([apodVc], direction: .reverse, animated: true, completion: nil)
-                }
-            case .failure(let error):
-                print(error)
-            }
-        }
+        let apodVc = ApodViewController.fromStoryBoard(date: Date())
+        self.setViewControllers([apodVc], direction: .reverse, animated: true, completion: nil)
     }
 }
 
@@ -39,31 +22,33 @@ extension ApodPageViewController: UIPageViewControllerDataSource {
 
     func pageViewController(_ pageViewController: UIPageViewController,
                             viewControllerBefore viewController: UIViewController) -> UIViewController? {
-        guard let currentIndex = (viewController as? ApodViewController)?.index else {
+        guard let currentDate = (viewController as? ApodViewController)?.date else {
             return nil
         }
-        let beforeIndex = apods.index(before: currentIndex)
-        guard beforeIndex >= apods.startIndex else {
+        guard let beforeDate = Constants.Calendars.apodCalendar.date(byAdding: .day, value: -1, to: currentDate) else {
             return nil
         }
-        let apodVc = ApodViewController.fromStoryBoard(apod: apods[beforeIndex], index: beforeIndex)
+        let comparison = Constants.Calendars.apodCalendar.compare(Constants.Dates.apodLaunchDate, to: beforeDate, toGranularity: .day)
+        guard comparison == .orderedSame || comparison == .orderedAscending else {
+            return nil
+        }
+        let apodVc = ApodViewController.fromStoryBoard(date: beforeDate)
         return apodVc
     }
 
     func pageViewController(_ pageViewController: UIPageViewController,
                             viewControllerAfter viewController: UIViewController) -> UIViewController? {
-        guard let currentIndex = (viewController as? ApodViewController)?.index else {
+        guard let currentDate = (viewController as? ApodViewController)?.date else {
             return nil
         }
-        let afterIndex = apods.index(after: currentIndex)
-        guard afterIndex < apods.endIndex else {
+        guard let afterDate = Constants.Calendars.apodCalendar.date(byAdding: .day, value: 1, to: currentDate) else {
             return nil
         }
-        let apodVc = ApodViewController.fromStoryBoard(apod: apods[afterIndex], index: afterIndex)
+        let comparison = Constants.Calendars.apodCalendar.compare(afterDate, to: Date(), toGranularity: .day)
+        guard comparison == .orderedSame || comparison == .orderedAscending else {
+            return nil
+        }
+        let apodVc = ApodViewController.fromStoryBoard(date: afterDate)
         return apodVc
     }
-}
-
-extension ApodPageViewController: UIPageViewControllerDelegate {
-
 }

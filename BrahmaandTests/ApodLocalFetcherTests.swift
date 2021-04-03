@@ -24,7 +24,7 @@ class ApodLocalFetcherTests: XCTestCase {
     func testApodLocalFetcher() {
         // Insert
         let apods = ApodTestData.testApods
-        XCTAssertTrue(localFetcher.insertApods(apods: apods))
+        XCTAssertNoThrow(try localFetcher.insertApods(apods: apods), "Failed to insert apods")
 
         // Retrieve
         let fetchExpectation = XCTestExpectation(description: "Apods fetched!")

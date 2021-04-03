@@ -13,3 +13,8 @@ extension Date {
         return Constants.DateFormatters.apodApiFormatter.string(from: self)
     }
 }
+
+// Convenience extension that lets you throw strings as errors
+extension String: LocalizedError {
+    public var errorDescription: String? { return self }
+}

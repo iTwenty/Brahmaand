@@ -15,21 +15,19 @@ class ApodViewController: UIViewController {
     @IBOutlet weak var apodTitleLabel: UILabel!
     @IBOutlet weak var apodExplanationTextView: UITextView!
 
-    private var apod: Apod?
-    var index: Int?
+    var date: Date?
 
-    static func fromStoryBoard(apod: Apod, index: Int) -> ApodViewController {
+    static func fromStoryBoard(date: Date) -> ApodViewController {
         let sb = UIStoryboard(name: "Main", bundle: .main)
         let vc: ApodViewController = sb.instantiateViewController(identifier: "ApodViewController")
-        vc.apod = apod
-        vc.index = index
+        vc.date = date
         return vc
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         resetViews()
-        self.showApod()
+        self.fetchApod()
     }
 
     private func resetViews() {
@@ -38,8 +36,21 @@ class ApodViewController: UIViewController {
         self.apodExplanationTextView.text = nil
     }
 
-    private func showApod() {
-        guard let apod = self.apod else { return }
+    private func fetchApod() {
+        guard let date = date else { return }
+        ApodCompositeFetcher.fetchApod(forDate: date, options: nil) { (result) in
+            switch result {
+            case .success(let apod):
+                DispatchQueue.main.async {
+                    self.showApod(apod)
+                }
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+
+    private func showApod(_ apod: Apod) {
         let processor = DownsamplingImageProcessor(size: apodImageView.bounds.size)
         apodImageView.kf.indicatorType = .activity
         apodImageView.kf.setImage(

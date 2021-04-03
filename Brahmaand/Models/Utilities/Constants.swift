@@ -17,4 +17,24 @@ struct Constants {
             return formatter
         }()
     }
+
+    struct Calendars {
+
+        static let apodCalendar: Calendar = {
+            var calendar = Calendar(identifier: .gregorian)
+            calendar.timeZone = TimeZone(abbreviation: "PST")!
+            return calendar
+        }()
+    }
+
+    struct Dates {
+
+        static let apodLaunchDate: Date = {
+            var components = DateComponents()
+            components.year = 1995
+            components.month = 6
+            components.day = 16
+            return Calendars.apodCalendar.date(from: components)!
+        }()
+    }
 }

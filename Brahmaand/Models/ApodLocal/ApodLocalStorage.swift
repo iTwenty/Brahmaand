@@ -38,10 +38,10 @@ final class ApodLocalStorage: ApodFetcher {
         self.db = db
     }
 
-    @discardableResult func insertApods(apods: [Apod]) -> Bool {
+    func insertApods(apods: [Apod]) throws {
         for apod in apods {
             let insertQuery = """
-INSERT OR REPLACE INTO \(DbInfo.TableApods.name)
+INSERT OR IGNORE INTO \(DbInfo.TableApods.name)
 (\(DbInfo.TableApods.col_date),
 \(DbInfo.TableApods.col_title),
 \(DbInfo.TableApods.col_mediaType),
@@ -58,17 +58,11 @@ VALUES (?, ?, ?, ?, ?, ?, ?)
                                   apod.url.absoluteString,
                                   apod.hdurl?.absoluteString,
                                   apod.copyright]
-            do {
-                try db.insert(insertString: insertQuery, parameters: params)
-            } catch {
-                print(error)
-                return false
-            }
+            try db.insert(insertString: insertQuery, parameters: params)
         }
-        return true
     }
 
-    func fetchApod(forDate date: Date, completion: @escaping (Result<Apod, Error>) -> ()) {
+    func fetchApod(forDate date: Date, options: FetchOptions?, completion: @escaping (Result<Apod, Error>) -> ()) {
         let fetchQuery = "SELECT * FROM \(DbInfo.TableApods.name) WHERE \(DbInfo.TableApods.col_date) = ?"
         let params = [date.apodApiFormatted()]
         do {
@@ -85,7 +79,7 @@ VALUES (?, ?, ?, ?, ?, ?, ?)
         }
     }
 
-    func fetchApods(startDate: Date, endDate: Date, completion: @escaping (Result<[Apod], Error>) -> ()) {
+    func fetchApods(startDate: Date, endDate: Date, options: FetchOptions?, completion: @escaping (Result<[Apod], Error>) -> ()) {
         let fetchQuery = "SELECT * FROM \(DbInfo.TableApods.name) WHERE \(DbInfo.TableApods.col_date) >= ? AND \(DbInfo.TableApods.col_date) <= ?"
         let params = [startDate.apodApiFormatted(), endDate.apodApiFormatted()]
         do {

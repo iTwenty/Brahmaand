@@ -13,6 +13,7 @@
 		6365FBAC260B3B18003C9ED5 /* ErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6365FBAB260B3B18003C9ED5 /* ErrorResponse.swift */; };
 		63A2B0F926148788008F991F /* ApodLocalFetcherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A2B0F826148788008F991F /* ApodLocalFetcherTests.swift */; };
 		63A2B0FF26148CBF008F991F /* ApodTestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A2B0FE26148CBF008F991F /* ApodTestData.swift */; };
+		63C2DE5726184E9C00EADB7B /* ApoodCompositeFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C2DE5626184E9C00EADB7B /* ApoodCompositeFetcher.swift */; };
 		63D84A052609F69500796D25 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D84A042609F69500796D25 /* AppDelegate.swift */; };
 		63D84A092609F69500796D25 /* ApodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D84A082609F69500796D25 /* ApodViewController.swift */; };
 		63D84A0C2609F69500796D25 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63D84A0A2609F69500796D25 /* Main.storyboard */; };
@@ -44,6 +45,7 @@
 		6365FBAB260B3B18003C9ED5 /* ErrorResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorResponse.swift; sourceTree = "<group>"; };
 		63A2B0F826148788008F991F /* ApodLocalFetcherTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApodLocalFetcherTests.swift; sourceTree = "<group>"; };
 		63A2B0FE26148CBF008F991F /* ApodTestData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApodTestData.swift; sourceTree = "<group>"; };
+		63C2DE5626184E9C00EADB7B /* ApoodCompositeFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApoodCompositeFetcher.swift; sourceTree = "<group>"; };
 		63D84A012609F69500796D25 /* Brahmaand.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Brahmaand.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63D84A042609F69500796D25 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		63D84A082609F69500796D25 /* ApodViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApodViewController.swift; sourceTree = "<group>"; };
@@ -167,6 +169,7 @@
 				63D84A52260A027A00796D25 /* Utilities */,
 				63D84A472609FCDD00796D25 /* Apod.swift */,
 				63D84A432609FCB500796D25 /* ApodFetcher.swift */,
+				63C2DE5626184E9C00EADB7B /* ApoodCompositeFetcher.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -297,6 +300,7 @@
 				C0A480CA260F8D0200FE2756 /* ApodPageViewController.swift in Sources */,
 				63D84A442609FCB500796D25 /* ApodFetcher.swift in Sources */,
 				63D84A052609F69500796D25 /* AppDelegate.swift in Sources */,
+				63C2DE5726184E9C00EADB7B /* ApoodCompositeFetcher.swift in Sources */,
 				6365FBAC260B3B18003C9ED5 /* ErrorResponse.swift in Sources */,
 				C0A480CE2610900500FE2756 /* UIImageColors.swift in Sources */,
 				632C3B2D2611D5F3007B39C6 /* ApodLocalStorage.swift in Sources */,
