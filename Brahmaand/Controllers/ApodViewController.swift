@@ -8,10 +8,12 @@
 import UIKit
 import Kingfisher
 
+extension UIActivityIndicatorView : Placeholder {}
+
 class ApodViewController: UIViewController {
 
     @IBOutlet weak var scrollView: UIScrollView!
-    @IBOutlet weak var apodImageView: UIImageView!
+    @IBOutlet weak var apodMediaView: ApodMediaView!
     @IBOutlet weak var apodTitleLabel: UILabel!
     @IBOutlet weak var apodExplanationTextView: UITextView!
 
@@ -31,7 +33,6 @@ class ApodViewController: UIViewController {
     }
 
     private func resetViews() {
-        self.apodImageView.image = nil
         self.apodTitleLabel.text = nil
         self.apodExplanationTextView.text = nil
     }
@@ -51,21 +52,7 @@ class ApodViewController: UIViewController {
     }
 
     private func showApod(_ apod: Apod) {
-        let processor = DownsamplingImageProcessor(size: apodImageView.bounds.size)
-        apodImageView.kf.indicatorType = .activity
-        apodImageView.kf.setImage(
-            with: apod.url,
-            options: [.processor(processor),
-                      .scaleFactor(UIScreen.main.scale),
-                      .transition(.fade(1)),
-                      .cacheOriginalImage]) { [weak self] (result) in
-            switch result {
-            case .success(let value):
-                self?.setBackgroundColor(fromImage: value.image)
-            case .failure(let error):
-                print(error.localizedDescription)
-            }
-        }
+        self.apodMediaView.loadMedia(fromApod: apod)
         self.apodTitleLabel.text = apod.title
         self.apodExplanationTextView.text = apod.explanation
     }

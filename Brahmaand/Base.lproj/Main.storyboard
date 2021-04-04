@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Lsa-tU-Qo2">
-    <device id="retina6_1" orientation="landscape" appearance="light"/>
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
@@ -14,33 +14,33 @@
             <objects>
                 <viewController storyboardIdentifier="ApodViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="ApodViewController" customModule="Brahmaand" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pzP-wz-TMJ">
-                                <rect key="frame" x="61" y="0.0" width="776" height="393"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pzP-wz-TMJ">
+                                <rect key="frame" x="20" y="44" width="374" height="818"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="zgL-pQ-WBz" userLabel="Image Details Stack">
-                                        <rect key="frame" x="0.0" y="12" width="776" height="214"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="zgL-pQ-WBz" userLabel="Image Details Stack">
+                                        <rect key="frame" x="0.0" y="12" width="374" height="434.5"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aIj-G3-KaD" userLabel="Apod Image">
-                                                <rect key="frame" x="0.0" y="7" width="374" height="200"/>
+                                            <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6IF-vI-Yan" customClass="ApodMediaView" customModule="Brahmaand" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="374" height="210.5"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="200" placeholder="YES" id="exp-GE-Y1u"/>
+                                                    <constraint firstAttribute="width" secondItem="6IF-vI-Yan" secondAttribute="height" multiplier="16:9" id="2PY-pe-tgd"/>
                                                 </constraints>
-                                            </imageView>
+                                            </view>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="hjx-l1-0cL" userLabel="Title Details Stack">
-                                                <rect key="frame" x="384" y="0.0" width="392" height="214"/>
+                                                <rect key="frame" x="0.0" y="220.5" width="374" height="214"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="APOD Title" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2lG-JM-1Kz" userLabel="Apod Title">
-                                                        <rect key="frame" x="0.0" y="0.0" width="392" height="20.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="20.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" layoutMarginsFollowReadableWidth="YES" scrollEnabled="NO" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="sia-sH-Eic" userLabel="Apod Explanation">
-                                                        <rect key="frame" x="0.0" y="30.5" width="392" height="183.5"/>
+                                                        <rect key="frame" x="0.0" y="30.5" width="374" height="183.5"/>
                                                         <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                                         <color key="textColor" systemColor="labelColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -76,7 +76,7 @@
                     </view>
                     <connections>
                         <outlet property="apodExplanationTextView" destination="sia-sH-Eic" id="003-rK-lte"/>
-                        <outlet property="apodImageView" destination="aIj-G3-KaD" id="5VK-bI-qGw"/>
+                        <outlet property="apodMediaView" destination="6IF-vI-Yan" id="A76-kj-vBm"/>
                         <outlet property="apodTitleLabel" destination="2lG-JM-1Kz" id="TD5-PI-g7Z"/>
                         <outlet property="scrollView" destination="pzP-wz-TMJ" id="sNa-Vw-J0d"/>
                     </connections>
@@ -88,7 +88,7 @@
         <!--Apod Page View Controller-->
         <scene sceneID="sJV-4F-7vJ">
             <objects>
-                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="min" id="Lsa-tU-Qo2" customClass="ApodPageViewController" customModule="Brahmaand" customModuleProvider="target" sceneMemberID="viewController"/>
+                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="Lsa-tU-Qo2" customClass="ApodPageViewController" customModule="Brahmaand" customModuleProvider="target" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lb0-hl-mOr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-710" y="102"/>

@@ -9,6 +9,15 @@
           "revision": "bbc4bc4def7eb05a7ba8e1219f80ee9be327334e",
           "version": "6.2.1"
         }
+      },
+      {
+        "package": "YoutubePlayer-in-WKWebView",
+        "repositoryURL": "https://github.com/hmhv/YoutubePlayer-in-WKWebView",
+        "state": {
+          "branch": null,
+          "revision": "0dd42219fae6689e1babcd94265d014e7b2d744f",
+          "version": "0.3.6"
+        }
       }
     ]
   },
