@@ -27,7 +27,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="374" height="210.5"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" secondItem="6IF-vI-Yan" secondAttribute="height" multiplier="16:9" id="2PY-pe-tgd"/>
+                                                    <constraint firstAttribute="width" secondItem="6IF-vI-Yan" secondAttribute="height" multiplier="16:9" placeholder="YES" id="2PY-pe-tgd"/>
                                                 </constraints>
                                             </view>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="hjx-l1-0cL" userLabel="Title Details Stack">

@@ -12,7 +12,6 @@ import YoutubePlayer_in_WKWebView
 class ApodMediaView: UIView {
 
     @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet var youtubeView: WKYTPlayerView!
     @IBOutlet weak var contentView: UIView!
 
     override init(frame: CGRect) {
@@ -38,40 +37,14 @@ class ApodMediaView: UIView {
         self.backgroundColor = .clear
     }
 
-    func loadMedia(fromApod apod: Apod) {
-        switch apod.mediaType {
-        case .image:
-            self.loadImage(url: apod.url)
-        case .video:
-            self.loadVideo(url: apod.url)
-        }
-    }
-
-    private func loadImage(url: URL) {
-        self.youtubeView.isHidden = true
-        self.imageView.isHidden = false
+    func loadImage(url: URL) {
         let processor = DownsamplingImageProcessor(size: imageView.bounds.size)
-        imageView.kf.indicatorType = .activity
         imageView.kf.setImage(
             with: url,
             placeholder: UIActivityIndicatorView(style: .medium),
             options: [.processor(processor),
                       .scaleFactor(UIScreen.main.scale),
                       .transition(.fade(1)),
-                      .cacheOriginalImage]) { [weak self] (result) in
-            switch result {
-            case .success(let value):
-                print("success \(value.source.url?.absoluteString ?? "")")
-                //self?.setBackgroundColor(fromImage: value.image)
-            case .failure(let error):
-                print(error.localizedDescription)
-            }
-        }
-    }
-
-    private func loadVideo(url: URL) {
-        self.youtubeView.isHidden = false
-        self.imageView.isHidden = true
-        youtubeView.loadVideo(byURL: url.absoluteString, startSeconds: 0, suggestedQuality: .auto)
+                      .cacheOriginalImage])
     }
 }

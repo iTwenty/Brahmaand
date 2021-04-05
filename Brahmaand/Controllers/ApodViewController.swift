@@ -52,9 +52,30 @@ class ApodViewController: UIViewController {
     }
 
     private func showApod(_ apod: Apod) {
-        self.apodMediaView.loadMedia(fromApod: apod)
         self.apodTitleLabel.text = apod.title
         self.apodExplanationTextView.text = apod.explanation
+        switch apod.mediaType {
+        case .image:
+            self.loadImage(url: apod.url)
+        case .video:
+            self.loadVideo(url: apod.url)
+        }
+    }
+
+    private func loadImage(url: URL) {
+        self.apodMediaView.loadImage(url: url)
+    }
+
+    private func loadVideo(url: URL) {
+        guard let host = url.host else { return }
+        if host.contains("youtube") {
+            let videoCode = url.lastPathComponent
+            let imgUrlString = "https://img.youtube.com/vi/\(videoCode)/maxresdefault.jpg"
+            guard let imgUrl = URL(string: imgUrlString) else { return }
+            loadImage(url: imgUrl)
+        } else {
+            // TODO some other video site. load in wkwebview??
+        }
     }
 
     private func setBackgroundColor(fromImage image: UIImage) {
