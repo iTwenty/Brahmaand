@@ -14,7 +14,6 @@
 		63373F702619BEF700B7E8DA /* ApodMediaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63373F6F2619BEF700B7E8DA /* ApodMediaView.swift */; };
 		63373F742619BF0E00B7E8DA /* ApodMediaView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63373F732619BF0E00B7E8DA /* ApodMediaView.xib */; };
 		6365FBAC260B3B18003C9ED5 /* ErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6365FBAB260B3B18003C9ED5 /* ErrorResponse.swift */; };
-		63914B45261D9A04002B8FF8 /* ApodContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63914B44261D9A04002B8FF8 /* ApodContainerViewController.swift */; };
 		63A2B0F926148788008F991F /* ApodLocalFetcherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A2B0F826148788008F991F /* ApodLocalFetcherTests.swift */; };
 		63A2B0FF26148CBF008F991F /* ApodTestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A2B0FE26148CBF008F991F /* ApodTestData.swift */; };
 		63C2DE5726184E9C00EADB7B /* ApoodCompositeFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C2DE5626184E9C00EADB7B /* ApoodCompositeFetcher.swift */; };
@@ -31,6 +30,9 @@
 		63D84A5E260A08E200796D25 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D84A5D260A08E200796D25 /* Constants.swift */; };
 		C0A480CA260F8D0200FE2756 /* ApodPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A480C9260F8D0200FE2756 /* ApodPageViewController.swift */; };
 		C0A480CE2610900500FE2756 /* UIImageColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A480CD2610900500FE2756 /* UIImageColors.swift */; };
+		C0D409B4261E1591000B53B7 /* Parchment in Frameworks */ = {isa = PBXBuildFile; productRef = C0D409B3261E1591000B53B7 /* Parchment */; };
+		C0D409C5261E1ED8000B53B7 /* ApodDateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D409C3261E1ED8000B53B7 /* ApodDateCell.swift */; };
+		C0D409C6261E1ED8000B53B7 /* ApodDateCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C0D409C4261E1ED8000B53B7 /* ApodDateCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,7 +51,6 @@
 		63373F6F2619BEF700B7E8DA /* ApodMediaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApodMediaView.swift; sourceTree = "<group>"; };
 		63373F732619BF0E00B7E8DA /* ApodMediaView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ApodMediaView.xib; sourceTree = "<group>"; };
 		6365FBAB260B3B18003C9ED5 /* ErrorResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorResponse.swift; sourceTree = "<group>"; };
-		63914B44261D9A04002B8FF8 /* ApodContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApodContainerViewController.swift; sourceTree = "<group>"; };
 		63A2B0F826148788008F991F /* ApodLocalFetcherTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApodLocalFetcherTests.swift; sourceTree = "<group>"; };
 		63A2B0FE26148CBF008F991F /* ApodTestData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApodTestData.swift; sourceTree = "<group>"; };
 		63C2DE5626184E9C00EADB7B /* ApoodCompositeFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApoodCompositeFetcher.swift; sourceTree = "<group>"; };
@@ -70,6 +71,8 @@
 		63D84A5D260A08E200796D25 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		C0A480C9260F8D0200FE2756 /* ApodPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApodPageViewController.swift; sourceTree = "<group>"; };
 		C0A480CD2610900500FE2756 /* UIImageColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageColors.swift; sourceTree = "<group>"; };
+		C0D409C3261E1ED8000B53B7 /* ApodDateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApodDateCell.swift; sourceTree = "<group>"; };
+		C0D409C4261E1ED8000B53B7 /* ApodDateCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ApodDateCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +80,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C0D409B4261E1591000B53B7 /* Parchment in Frameworks */,
 				63373F662619BE8600B7E8DA /* YoutubePlayer-in-WKWebView in Frameworks */,
 				63209411260F3A67002AC082 /* Kingfisher in Frameworks */,
 			);
@@ -97,7 +101,6 @@
 			children = (
 				63D84A082609F69500796D25 /* ApodViewController.swift */,
 				C0A480C9260F8D0200FE2756 /* ApodPageViewController.swift */,
-				63914B44261D9A04002B8FF8 /* ApodContainerViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -107,6 +110,8 @@
 			children = (
 				63373F6F2619BEF700B7E8DA /* ApodMediaView.swift */,
 				63373F732619BF0E00B7E8DA /* ApodMediaView.xib */,
+				C0D409C3261E1ED8000B53B7 /* ApodDateCell.swift */,
+				C0D409C4261E1ED8000B53B7 /* ApodDateCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -215,6 +220,7 @@
 			packageProductDependencies = (
 				63209410260F3A67002AC082 /* Kingfisher */,
 				63373F652619BE8600B7E8DA /* YoutubePlayer-in-WKWebView */,
+				C0D409B3261E1591000B53B7 /* Parchment */,
 			);
 			productName = Brahmaand;
 			productReference = 63D84A012609F69500796D25 /* Brahmaand.app */;
@@ -268,6 +274,7 @@
 			packageReferences = (
 				6320940F260F3A67002AC082 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				63373F642619BE8600B7E8DA /* XCRemoteSwiftPackageReference "YoutubePlayer-in-WKWebView" */,
+				C0D409B2261E1591000B53B7 /* XCRemoteSwiftPackageReference "Parchment" */,
 			);
 			productRefGroup = 63D84A022609F69500796D25 /* Products */;
 			projectDirPath = "";
@@ -287,6 +294,7 @@
 				63D84A112609F69700796D25 /* LaunchScreen.storyboard in Resources */,
 				63373F742619BF0E00B7E8DA /* ApodMediaView.xib in Resources */,
 				63D84A0E2609F69700796D25 /* Assets.xcassets in Resources */,
+				C0D409C6261E1ED8000B53B7 /* ApodDateCell.xib in Resources */,
 				63D84A0C2609F69500796D25 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -308,10 +316,10 @@
 				63D84A4C2609FF2A00796D25 /* ApodApiFetcher.swift in Sources */,
 				63373F702619BEF700B7E8DA /* ApodMediaView.swift in Sources */,
 				63D84A54260A029300796D25 /* Extensions.swift in Sources */,
+				C0D409C5261E1ED8000B53B7 /* ApodDateCell.swift in Sources */,
 				63D84A092609F69500796D25 /* ApodViewController.swift in Sources */,
 				63D84A482609FCDD00796D25 /* Apod.swift in Sources */,
 				63D84A5E260A08E200796D25 /* Constants.swift in Sources */,
-				63914B45261D9A04002B8FF8 /* ApodContainerViewController.swift in Sources */,
 				632C3B332611D7AF007B39C6 /* SqliteDb.swift in Sources */,
 				C0A480CA260F8D0200FE2756 /* ApodPageViewController.swift in Sources */,
 				63D84A442609FCB500796D25 /* ApodFetcher.swift in Sources */,
@@ -610,6 +618,14 @@
 				minimumVersion = 0.3.6;
 			};
 		};
+		C0D409B2261E1591000B53B7 /* XCRemoteSwiftPackageReference "Parchment" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/rechsteiner/Parchment";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -622,6 +638,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 63373F642619BE8600B7E8DA /* XCRemoteSwiftPackageReference "YoutubePlayer-in-WKWebView" */;
 			productName = "YoutubePlayer-in-WKWebView";
+		};
+		C0D409B3261E1591000B53B7 /* Parchment */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C0D409B2261E1591000B53B7 /* XCRemoteSwiftPackageReference "Parchment" */;
+			productName = Parchment;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

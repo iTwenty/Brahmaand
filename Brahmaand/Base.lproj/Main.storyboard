@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="mhJ-XM-8AF">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Lsa-tU-Qo2">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -84,38 +84,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="141" y="117"/>
-        </scene>
-        <!--Apod Container View Controller-->
-        <scene sceneID="K2v-aO-1mS">
-            <objects>
-                <viewController id="mhJ-XM-8AF" customClass="ApodContainerViewController" customModule="Brahmaand" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="TMC-xM-gyj">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="obB-4N-TCO">
-                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
-                                <connections>
-                                    <segue destination="Lsa-tU-Qo2" kind="embed" id="2zI-DU-jC2"/>
-                                </connections>
-                            </containerView>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="hgd-wo-7dr"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="obB-4N-TCO" firstAttribute="leading" secondItem="TMC-xM-gyj" secondAttribute="leading" id="Bdn-8T-opc"/>
-                            <constraint firstAttribute="bottom" secondItem="obB-4N-TCO" secondAttribute="bottom" id="c67-W6-Xwt"/>
-                            <constraint firstItem="obB-4N-TCO" firstAttribute="top" secondItem="hgd-wo-7dr" secondAttribute="top" id="gBJ-lY-ZGE"/>
-                            <constraint firstAttribute="trailing" secondItem="obB-4N-TCO" secondAttribute="trailing" id="kSZ-Id-5O9"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="apodPageContainerView" destination="obB-4N-TCO" id="mwg-PE-wN3"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="0Bq-8g-8gI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1617" y="109"/>
         </scene>
         <!--Apod Page View Controller-->
         <scene sceneID="sJV-4F-7vJ">

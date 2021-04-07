@@ -50,7 +50,7 @@ struct Constants {
         static let apodLaunchDate: Date = {
             var components = DateComponents()
             components.year = 1995
-            components.month = 6
+            components.month = 7
             components.day = 16
             return Calendars.apodCalendar.date(from: components)!
         }()
