@@ -21,7 +21,7 @@
                                 <rect key="frame" x="20" y="44" width="374" height="818"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="zgL-pQ-WBz" userLabel="Image Details Stack">
-                                        <rect key="frame" x="0.0" y="12" width="374" height="573.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="573.5"/>
                                         <subviews>
                                             <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6IF-vI-Yan" customClass="ApodMediaView" customModule="Brahmaand" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="374" height="210.5"/>
@@ -33,7 +33,7 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="hjx-l1-0cL" userLabel="Title Details Stack">
                                                 <rect key="frame" x="0.0" y="220.5" width="374" height="353"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="APOD Title" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2lG-JM-1Kz" userLabel="Apod Title">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="APOD Title" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2lG-JM-1Kz" userLabel="Apod Title">
                                                         <rect key="frame" x="0.0" y="0.0" width="374" height="41"/>
                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
                                                         <nil key="textColor"/>
@@ -50,19 +50,19 @@
                                             </stackView>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <variation key="widthClass=regular" axis="horizontal"/>
+                                        <variation key="widthClass=regular" axis="horizontal" distribution="fillEqually"/>
                                     </stackView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="zgL-pQ-WBz" firstAttribute="leading" secondItem="29x-dc-BmO" secondAttribute="leading" id="ZXb-7m-n0j"/>
-                                    <constraint firstItem="zgL-pQ-WBz" firstAttribute="trailing" secondItem="29x-dc-BmO" secondAttribute="trailing" id="h2G-Kx-ioW"/>
-                                    <constraint firstItem="zgL-pQ-WBz" firstAttribute="width" secondItem="KMj-4x-OtJ" secondAttribute="width" id="jem-zj-N8r"/>
-                                    <constraint firstItem="zgL-pQ-WBz" firstAttribute="top" secondItem="29x-dc-BmO" secondAttribute="top" constant="12" id="lZ6-mJ-iJC"/>
-                                    <constraint firstItem="zgL-pQ-WBz" firstAttribute="bottom" secondItem="29x-dc-BmO" secondAttribute="bottom" id="rBK-z4-ANx"/>
+                                    <constraint firstItem="zgL-pQ-WBz" firstAttribute="leading" secondItem="pzP-wz-TMJ" secondAttribute="leading" id="ZXb-7m-n0j"/>
+                                    <constraint firstItem="zgL-pQ-WBz" firstAttribute="trailing" secondItem="pzP-wz-TMJ" secondAttribute="trailing" id="h2G-Kx-ioW"/>
+                                    <constraint firstItem="zgL-pQ-WBz" firstAttribute="width" secondItem="pzP-wz-TMJ" secondAttribute="width" id="jem-zj-N8r"/>
+                                    <constraint firstItem="zgL-pQ-WBz" firstAttribute="top" secondItem="pzP-wz-TMJ" secondAttribute="top" id="lZ6-mJ-iJC"/>
+                                    <constraint firstItem="zgL-pQ-WBz" firstAttribute="bottom" secondItem="pzP-wz-TMJ" secondAttribute="bottom" id="rBK-z4-ANx"/>
                                 </constraints>
-                                <viewLayoutGuide key="contentLayoutGuide" id="29x-dc-BmO"/>
-                                <viewLayoutGuide key="frameLayoutGuide" id="KMj-4x-OtJ"/>
+                                <viewLayoutGuide key="contentLayoutGuide" id="x0b-LC-4xz"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="QBy-yH-gmu"/>
                             </scrollView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>

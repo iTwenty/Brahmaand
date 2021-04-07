@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 extension Date {
 
@@ -17,4 +18,13 @@ extension Date {
 // Convenience extension that lets you throw strings as errors
 extension String: LocalizedError {
     public var errorDescription: String? { return self }
+}
+
+extension UIImage {
+    func resized(size: CGSize) -> UIImage {
+        let renderer = UIGraphicsImageRenderer(size: size)
+        return renderer.image { (context) in
+            self.draw(in: CGRect(origin: .zero, size: size))
+        }
+    }
 }

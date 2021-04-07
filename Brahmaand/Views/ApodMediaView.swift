@@ -35,16 +35,33 @@ class ApodMediaView: UIView {
             self.contentView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
         ])
         self.backgroundColor = .clear
+        imageView.contentMode = .scaleAspectFill
     }
 
     func loadImage(url: URL) {
-        let processor = DownsamplingImageProcessor(size: imageView.bounds.size)
-        imageView.kf.setImage(
-            with: url,
-            placeholder: UIActivityIndicatorView(style: .medium),
-            options: [.processor(processor),
-                      .scaleFactor(UIScreen.main.scale),
-                      .transition(.fade(1)),
-                      .cacheOriginalImage])
+        KingfisherManager.shared.retrieveImage(with: url,
+                                               options: [.scaleFactor(UIScreen.main.scale),
+                                                         .transition(.fade(1)),
+                                                         .cacheOriginalImage],
+                                               progressBlock: nil,
+                                               downloadTaskUpdated: nil) { [weak self] (result) in
+            switch result {
+            case .success(let imageResult):
+                self?.resize(imageResult.image)
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+
+    private func resize(_ image: UIImage) {
+        let imageWidth = image.size.width
+        let imageViewWidth = imageView.bounds.size.width
+        let resizeFactor = imageWidth / imageViewWidth
+        if resizeFactor <= 1.0 {
+            imageView.image = image
+        } else {
+            imageView.image = image.resized(size: CGSize(width: imageViewWidth, height: image.size.height * resizeFactor))
+        }
     }
 }
