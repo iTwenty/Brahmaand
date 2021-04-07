@@ -16,6 +16,24 @@ struct Constants {
             formatter.dateFormat = "yyyy-MM-dd"
             return formatter
         }()
+
+        static let displayDayFormatter: DateFormatter = {
+            let formatter = DateFormatter()
+            formatter.dateFormat = "dd"
+            return formatter
+        }()
+
+        static let displayMonthFormatter: DateFormatter = {
+            let formatter = DateFormatter()
+            formatter.dateFormat = "MMM"
+            return formatter
+        }()
+
+        static let displayYearFormatter: DateFormatter = {
+            let formatter = DateFormatter()
+            formatter.dateFormat = "yyyy"
+            return formatter
+        }()
     }
 
     struct Calendars {

@@ -93,22 +93,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="d9P-4a-EH8">
-                                <rect key="frame" x="20" y="44" width="374" height="48"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="48" placeholder="YES" id="FH0-dg-Kcj"/>
-                                </constraints>
-                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="7ga-ay-Hfa">
-                                    <size key="itemSize" width="32" height="32"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                </collectionViewFlowLayout>
-                                <cells/>
-                            </collectionView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="obB-4N-TCO">
-                                <rect key="frame" x="0.0" y="92" width="414" height="804"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
                                 <connections>
                                     <segue destination="Lsa-tU-Qo2" kind="embed" id="2zI-DU-jC2"/>
                                 </connections>
@@ -117,18 +103,14 @@
                         <viewLayoutGuide key="safeArea" id="hgd-wo-7dr"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="d9P-4a-EH8" secondAttribute="trailing" id="8n6-oR-24c"/>
                             <constraint firstItem="obB-4N-TCO" firstAttribute="leading" secondItem="TMC-xM-gyj" secondAttribute="leading" id="Bdn-8T-opc"/>
-                            <constraint firstAttribute="leadingMargin" secondItem="d9P-4a-EH8" secondAttribute="leading" id="OZK-JR-5lA"/>
                             <constraint firstAttribute="bottom" secondItem="obB-4N-TCO" secondAttribute="bottom" id="c67-W6-Xwt"/>
-                            <constraint firstItem="obB-4N-TCO" firstAttribute="top" secondItem="d9P-4a-EH8" secondAttribute="bottom" id="fZg-LB-hJw"/>
-                            <constraint firstAttribute="topMargin" secondItem="d9P-4a-EH8" secondAttribute="top" id="ggB-Yn-QdO"/>
+                            <constraint firstItem="obB-4N-TCO" firstAttribute="top" secondItem="hgd-wo-7dr" secondAttribute="top" id="gBJ-lY-ZGE"/>
                             <constraint firstAttribute="trailing" secondItem="obB-4N-TCO" secondAttribute="trailing" id="kSZ-Id-5O9"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="apodPageContainerView" destination="obB-4N-TCO" id="mwg-PE-wN3"/>
-                        <outlet property="timelineView" destination="d9P-4a-EH8" id="aLU-Vz-RMH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Bq-8g-8gI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

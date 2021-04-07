@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		63209411260F3A67002AC082 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 63209410260F3A67002AC082 /* Kingfisher */; };
-		6325DFF9261D9E2400A9F226 /* ApodDateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6325DFF7261D9E2400A9F226 /* ApodDateCell.swift */; };
-		6325DFFA261D9E2400A9F226 /* ApodDateCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6325DFF8261D9E2400A9F226 /* ApodDateCell.xib */; };
 		632C3B2D2611D5F3007B39C6 /* ApodLocalStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632C3B2C2611D5F3007B39C6 /* ApodLocalStorage.swift */; };
 		632C3B332611D7AF007B39C6 /* SqliteDb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632C3B322611D7AF007B39C6 /* SqliteDb.swift */; };
 		63373F662619BE8600B7E8DA /* YoutubePlayer-in-WKWebView in Frameworks */ = {isa = PBXBuildFile; productRef = 63373F652619BE8600B7E8DA /* YoutubePlayer-in-WKWebView */; };
@@ -46,8 +44,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		6325DFF7261D9E2400A9F226 /* ApodDateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApodDateCell.swift; sourceTree = "<group>"; };
-		6325DFF8261D9E2400A9F226 /* ApodDateCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ApodDateCell.xib; sourceTree = "<group>"; };
 		632C3B2C2611D5F3007B39C6 /* ApodLocalStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApodLocalStorage.swift; sourceTree = "<group>"; };
 		632C3B322611D7AF007B39C6 /* SqliteDb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SqliteDb.swift; sourceTree = "<group>"; };
 		63373F6F2619BEF700B7E8DA /* ApodMediaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApodMediaView.swift; sourceTree = "<group>"; };
@@ -111,8 +107,6 @@
 			children = (
 				63373F6F2619BEF700B7E8DA /* ApodMediaView.swift */,
 				63373F732619BF0E00B7E8DA /* ApodMediaView.xib */,
-				6325DFF7261D9E2400A9F226 /* ApodDateCell.swift */,
-				6325DFF8261D9E2400A9F226 /* ApodDateCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -293,7 +287,6 @@
 				63D84A112609F69700796D25 /* LaunchScreen.storyboard in Resources */,
 				63373F742619BF0E00B7E8DA /* ApodMediaView.xib in Resources */,
 				63D84A0E2609F69700796D25 /* Assets.xcassets in Resources */,
-				6325DFFA261D9E2400A9F226 /* ApodDateCell.xib in Resources */,
 				63D84A0C2609F69500796D25 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -327,7 +320,6 @@
 				6365FBAC260B3B18003C9ED5 /* ErrorResponse.swift in Sources */,
 				C0A480CE2610900500FE2756 /* UIImageColors.swift in Sources */,
 				632C3B2D2611D5F3007B39C6 /* ApodLocalStorage.swift in Sources */,
-				6325DFF9261D9E2400A9F226 /* ApodDateCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
