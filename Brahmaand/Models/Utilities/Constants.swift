@@ -17,21 +17,9 @@ struct Constants {
             return formatter
         }()
 
-        static let displayDayFormatter: DateFormatter = {
+        static let displayFormatter: DateFormatter = {
             let formatter = DateFormatter()
-            formatter.dateFormat = "dd"
-            return formatter
-        }()
-
-        static let displayMonthFormatter: DateFormatter = {
-            let formatter = DateFormatter()
-            formatter.dateFormat = "MMM"
-            return formatter
-        }()
-
-        static let displayYearFormatter: DateFormatter = {
-            let formatter = DateFormatter()
-            formatter.dateFormat = "yyyy"
+            formatter.dateFormat = "dd MMM yyyy"
             return formatter
         }()
     }

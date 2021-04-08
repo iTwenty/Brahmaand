@@ -15,6 +15,7 @@ class ApodViewController: UIViewController {
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var apodMediaView: ApodMediaView!
     @IBOutlet weak var apodTitleLabel: UILabel!
+    @IBOutlet weak var apodDateButton: UIButton!
     @IBOutlet weak var apodExplanationTextView: UITextView!
 
     var date: Date?
@@ -53,6 +54,7 @@ class ApodViewController: UIViewController {
 
     private func showApod(_ apod: Apod) {
         self.apodTitleLabel.text = apod.title
+        self.apodDateButton.setTitle(apod.date.displayFormatted(), for: .normal)
         self.apodExplanationTextView.text = apod.explanation
         switch apod.mediaType {
         case .image:
@@ -76,6 +78,9 @@ class ApodViewController: UIViewController {
         } else {
             // TODO some other video site. load in wkwebview??
         }
+    }
+    @IBAction func didClickApodDateButton(_ sender: Any) {
+        print("clicked")
     }
 
     private func setBackgroundColor(fromImage image: UIImage) {
