@@ -15,8 +15,21 @@ class ApodViewController: UIViewController {
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var apodMediaView: ApodMediaView!
     @IBOutlet weak var apodTitleLabel: UILabel!
-    @IBOutlet weak var apodDateButton: UIButton!
+    @IBOutlet weak var apodDateButton: InputButton!
     @IBOutlet weak var apodExplanationTextView: UITextView!
+
+    private lazy var apodDatePickerView: UIDatePicker = {
+        let view = UIDatePicker()
+        view.datePickerMode = .date
+        view.calendar = Constants.Calendars.apodCalendar
+        view.minimumDate = Constants.Dates.apodLaunchDate
+        view.maximumDate = Date()
+        if #available(iOS 13.4, *) {
+            view.preferredDatePickerStyle = .wheels
+        }
+        view.addTarget(self, action: #selector(didSelectApodDate(_:)), for: .valueChanged)
+        return view
+    }()
 
     var date: Date?
 
@@ -36,6 +49,8 @@ class ApodViewController: UIViewController {
     private func resetViews() {
         self.apodTitleLabel.text = nil
         self.apodExplanationTextView.text = nil
+        self.apodDateButton.setTitle(nil, for: .normal)
+        self.apodDateButton.inputView = self.apodDatePickerView
     }
 
     private func fetchApod() {
@@ -79,8 +94,13 @@ class ApodViewController: UIViewController {
             // TODO some other video site. load in wkwebview??
         }
     }
+
     @IBAction func didClickApodDateButton(_ sender: Any) {
-        print("clicked")
+        self.apodDateButton.becomeFirstResponder()
+    }
+
+    @objc func didSelectApodDate(_ sender: Any) {
+        print(self.apodDatePickerView.date.displayFormatted())
     }
 
     private func setBackgroundColor(fromImage image: UIImage) {
