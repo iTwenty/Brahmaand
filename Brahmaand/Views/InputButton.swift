@@ -10,6 +10,7 @@ import UIKit
 class InputButton: UIButton {
 
     private var myInputView = UIView()
+    private var myInputAccessoryView: UIView?
 
     override var inputView: UIView {
         get {
@@ -17,6 +18,15 @@ class InputButton: UIButton {
         }
         set {
             self.myInputView = newValue
+        }
+    }
+
+    override var inputAccessoryView: UIView? {
+        get {
+            return self.myInputAccessoryView
+        }
+        set {
+            self.myInputAccessoryView = newValue
         }
     }
 

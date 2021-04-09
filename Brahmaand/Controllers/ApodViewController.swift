@@ -20,6 +20,7 @@ class ApodViewController: UIViewController {
 
     private lazy var apodDatePickerView: UIDatePicker = {
         let view = UIDatePicker()
+        view.translatesAutoresizingMaskIntoConstraints = false
         view.datePickerMode = .date
         view.calendar = Constants.Calendars.apodCalendar
         view.minimumDate = Constants.Dates.apodLaunchDate
@@ -31,12 +32,27 @@ class ApodViewController: UIViewController {
         return view
     }()
 
-    var date: Date?
+    private lazy var apodDatePickerToolbar: UIToolbar = {
+        // Give the toolbar 100x100 rect to begin with, or else it throws all sorts of autolayout constraint errors
+        // when trying to lay out the buttons.
+        let bar = UIToolbar(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
+        bar.translatesAutoresizingMaskIntoConstraints = false
+        let todayButton = UIBarButtonItem(title: "Today", style: .plain, target: self, action: #selector(didClickTodayButton(_:)))
+        let flexiSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(didClickDoneButton(_:)))
+        bar.items = [todayButton, flexiSpace, doneButton]
+        bar.sizeToFit()
+        return bar
+    }()
 
-    static func fromStoryBoard(date: Date) -> ApodViewController {
+    var date: Date?
+    var didSelectDate: ((Date, UIPageViewController.NavigationDirection) -> ())?
+
+    static func fromStoryBoard(date: Date, didSelectDate: ((Date, UIPageViewController.NavigationDirection) -> ())?) -> ApodViewController {
         let sb = UIStoryboard(name: "Main", bundle: .main)
         let vc: ApodViewController = sb.instantiateViewController(identifier: "ApodViewController")
         vc.date = date
+        vc.didSelectDate = didSelectDate
         return vc
     }
 
@@ -51,6 +67,7 @@ class ApodViewController: UIViewController {
         self.apodExplanationTextView.text = nil
         self.apodDateButton.setTitle(nil, for: .normal)
         self.apodDateButton.inputView = self.apodDatePickerView
+        self.apodDateButton.inputAccessoryView = self.apodDatePickerToolbar
     }
 
     private func fetchApod() {
@@ -97,10 +114,27 @@ class ApodViewController: UIViewController {
 
     @IBAction func didClickApodDateButton(_ sender: Any) {
         self.apodDateButton.becomeFirstResponder()
+        if let date = self.date {
+            self.apodDatePickerView.setDate(date, animated: false)
+        }
     }
 
     @objc func didSelectApodDate(_ sender: Any) {
         print(self.apodDatePickerView.date.displayFormatted())
+    }
+
+    @objc func didClickTodayButton(_ sender: Any) {
+        apodDatePickerView.setDate(apodDatePickerView.maximumDate!, animated: false)
+    }
+
+    @objc func didClickDoneButton(_ sender: Any) {
+        guard let date = self.date else { return }
+        self.apodDateButton.resignFirstResponder()
+        let selectedDate = self.apodDatePickerView.date
+        if date != selectedDate {
+            let direction: UIPageViewController.NavigationDirection = date > selectedDate ? .reverse : .forward
+            self.didSelectDate?(self.apodDatePickerView.date, direction)
+        }
     }
 
     private func setBackgroundColor(fromImage image: UIImage) {

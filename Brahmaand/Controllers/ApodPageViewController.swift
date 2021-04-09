@@ -12,8 +12,13 @@ class ApodPageViewController: UIPageViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.dataSource = self
-        let apodVc = ApodViewController.fromStoryBoard(date: Date())
+        let apodVc = ApodViewController.fromStoryBoard(date: Date(), didSelectDate: jumpToDate(_:_:))
         self.setViewControllers([apodVc], direction: .reverse, animated: false, completion: nil)
+    }
+
+    func jumpToDate(_ date: Date, _ direction: UIPageViewController.NavigationDirection) {
+        let apodVc = ApodViewController.fromStoryBoard(date: date, didSelectDate: jumpToDate(_:_:))
+        self.setViewControllers([apodVc], direction: direction, animated: true, completion: nil)
     }
 }
 
@@ -32,7 +37,7 @@ extension ApodPageViewController: UIPageViewControllerDataSource {
         guard comparison == .orderedSame || comparison == .orderedAscending else {
             return nil
         }
-        let apodVc = ApodViewController.fromStoryBoard(date: beforeDate)
+        let apodVc = ApodViewController.fromStoryBoard(date: beforeDate, didSelectDate: jumpToDate(_:_:))
         return apodVc
     }
 
@@ -48,7 +53,7 @@ extension ApodPageViewController: UIPageViewControllerDataSource {
         guard comparison == .orderedSame || comparison == .orderedAscending else {
             return nil
         }
-        let apodVc = ApodViewController.fromStoryBoard(date: afterDate)
+        let apodVc = ApodViewController.fromStoryBoard(date: afterDate, didSelectDate: jumpToDate(_:_:))
         return apodVc
     }
 }
