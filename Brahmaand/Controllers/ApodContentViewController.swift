@@ -6,11 +6,8 @@
 //
 
 import UIKit
-import Kingfisher
 
-extension UIActivityIndicatorView : Placeholder {}
-
-class ApodViewController: UIViewController {
+class ApodContentViewController: UIViewController {
 
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var apodMediaView: ApodMediaView!
@@ -45,13 +42,13 @@ class ApodViewController: UIViewController {
         return bar
     }()
 
-    var date: Date?
+    var apod: Apod?
     var didSelectDate: ((Date, UIPageViewController.NavigationDirection) -> ())?
 
-    static func fromStoryBoard(date: Date, didSelectDate: ((Date, UIPageViewController.NavigationDirection) -> ())?) -> ApodViewController {
+    static func fromStoryBoard(apod: Apod, didSelectDate: ((Date, UIPageViewController.NavigationDirection) -> ())?) -> ApodContentViewController {
         let sb = UIStoryboard(name: "Main", bundle: .main)
-        let vc: ApodViewController = sb.instantiateViewController(identifier: "ApodViewController")
-        vc.date = date
+        let vc: ApodContentViewController = sb.instantiateViewController(identifier: "ApodContentViewController")
+        vc.apod = apod
         vc.didSelectDate = didSelectDate
         return vc
     }
@@ -59,35 +56,22 @@ class ApodViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         resetViews()
-        self.fetchApod()
+        showApod()
     }
 
     private func resetViews() {
-        self.apodTitleLabel.text = nil
-        self.apodExplanationTextView.text = nil
-        self.apodDateButton.setTitle(nil, for: .normal)
-        self.apodDateButton.inputView = self.apodDatePickerView
-        self.apodDateButton.inputAccessoryView = self.apodDatePickerToolbar
+        apodTitleLabel.text = nil
+        apodExplanationTextView.text = nil
+        apodDateButton.setTitle(nil, for: .normal)
+        apodDateButton.inputView = apodDatePickerView
+        apodDateButton.inputAccessoryView = apodDatePickerToolbar
     }
 
-    private func fetchApod() {
-        guard let date = date else { return }
-        ApodCompositeFetcher.fetchApod(forDate: date, options: nil) { (result) in
-            switch result {
-            case .success(let apod):
-                DispatchQueue.main.async {
-                    self.showApod(apod)
-                }
-            case .failure(let error):
-                print(error.localizedDescription)
-            }
-        }
-    }
-
-    private func showApod(_ apod: Apod) {
-        self.apodTitleLabel.text = apod.title
-        self.apodDateButton.setTitle(apod.date.displayFormatted(), for: .normal)
-        self.apodExplanationTextView.text = apod.explanation
+    private func showApod() {
+        guard let apod = apod else { return }
+        apodTitleLabel.text = apod.title
+        apodDateButton.setTitle(apod.date.displayFormatted(), for: .normal)
+        apodExplanationTextView.text = apod.explanation
         switch apod.mediaType {
         case .image:
             self.loadImage(url: apod.url)
@@ -114,7 +98,7 @@ class ApodViewController: UIViewController {
 
     @IBAction func didClickApodDateButton(_ sender: Any) {
         self.apodDateButton.becomeFirstResponder()
-        if let date = self.date {
+        if let date = apod?.date {
             self.apodDatePickerView.setDate(date, animated: false)
         }
     }
@@ -124,11 +108,13 @@ class ApodViewController: UIViewController {
     }
 
     @objc func didClickTodayButton(_ sender: Any) {
-        apodDatePickerView.setDate(apodDatePickerView.maximumDate!, animated: false)
+        if let maxDate = apodDatePickerView.maximumDate {
+            apodDatePickerView.setDate(maxDate, animated: false)
+        }
     }
 
     @objc func didClickDoneButton(_ sender: Any) {
-        guard let date = self.date else { return }
+        guard let date = apod?.date else { return }
         self.apodDateButton.resignFirstResponder()
         let selectedDate = self.apodDatePickerView.date
         if date != selectedDate {

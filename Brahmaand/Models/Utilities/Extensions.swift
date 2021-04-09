@@ -32,3 +32,20 @@ extension UIImage {
         }
     }
 }
+
+extension UIView {
+    func pin(to view: UIView, useSafeArea: Bool = false) {
+        self.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(self)
+        let leadingAnchor = useSafeArea ? view.safeAreaLayoutGuide.leadingAnchor : view.leadingAnchor
+        let topAnchor = useSafeArea ? view.safeAreaLayoutGuide.topAnchor : view.topAnchor
+        let trailingAnchor = useSafeArea ? view.safeAreaLayoutGuide.trailingAnchor : view.trailingAnchor
+        let bottomAnchor = useSafeArea ? view.safeAreaLayoutGuide.bottomAnchor : view.bottomAnchor
+        NSLayoutConstraint .activate([
+            self.leadingAnchor.constraint(equalTo: leadingAnchor),
+            self.topAnchor.constraint(equalTo: topAnchor),
+            self.trailingAnchor.constraint(equalTo: trailingAnchor),
+            self.bottomAnchor.constraint(equalTo: bottomAnchor),
+        ])
+    }
+}

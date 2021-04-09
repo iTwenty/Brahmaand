@@ -12,12 +12,12 @@ class ApodPageViewController: UIPageViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.dataSource = self
-        let apodVc = ApodViewController.fromStoryBoard(date: Date(), didSelectDate: jumpToDate(_:_:))
+        let apodVc = ApodContainerViewController(date: Date(), didSelectDate: jumpToDate(_:_:))
         self.setViewControllers([apodVc], direction: .reverse, animated: false, completion: nil)
     }
 
     func jumpToDate(_ date: Date, _ direction: UIPageViewController.NavigationDirection) {
-        let apodVc = ApodViewController.fromStoryBoard(date: date, didSelectDate: jumpToDate(_:_:))
+        let apodVc = ApodContainerViewController(date: date, didSelectDate: jumpToDate(_:_:))
         self.setViewControllers([apodVc], direction: direction, animated: true, completion: nil)
     }
 }
@@ -27,7 +27,7 @@ extension ApodPageViewController: UIPageViewControllerDataSource {
 
     func pageViewController(_ pageViewController: UIPageViewController,
                             viewControllerBefore viewController: UIViewController) -> UIViewController? {
-        guard let currentDate = (viewController as? ApodViewController)?.date else {
+        guard let currentDate = (viewController as? ApodContainerViewController)?.date else {
             return nil
         }
         guard let beforeDate = Constants.Calendars.apodCalendar.date(byAdding: .day, value: -1, to: currentDate) else {
@@ -37,13 +37,13 @@ extension ApodPageViewController: UIPageViewControllerDataSource {
         guard comparison == .orderedSame || comparison == .orderedAscending else {
             return nil
         }
-        let apodVc = ApodViewController.fromStoryBoard(date: beforeDate, didSelectDate: jumpToDate(_:_:))
+        let apodVc = ApodContainerViewController(date: beforeDate, didSelectDate: jumpToDate(_:_:))
         return apodVc
     }
 
     func pageViewController(_ pageViewController: UIPageViewController,
                             viewControllerAfter viewController: UIViewController) -> UIViewController? {
-        guard let currentDate = (viewController as? ApodViewController)?.date else {
+        guard let currentDate = (viewController as? ApodContainerViewController)?.date else {
             return nil
         }
         guard let afterDate = Constants.Calendars.apodCalendar.date(byAdding: .day, value: 1, to: currentDate) else {
@@ -53,7 +53,7 @@ extension ApodPageViewController: UIPageViewControllerDataSource {
         guard comparison == .orderedSame || comparison == .orderedAscending else {
             return nil
         }
-        let apodVc = ApodViewController.fromStoryBoard(date: afterDate, didSelectDate: jumpToDate(_:_:))
+        let apodVc = ApodContainerViewController(date: afterDate, didSelectDate: jumpToDate(_:_:))
         return apodVc
     }
 }
