@@ -43,13 +43,13 @@ class ApodContentViewController: UIViewController {
     }()
 
     var apod: Apod?
-    var didSelectDate: ((Date, UIPageViewController.NavigationDirection) -> ())?
+    var dateSelectAction: ((Date, UIPageViewController.NavigationDirection) -> ())?
 
-    static func fromStoryBoard(apod: Apod, didSelectDate: ((Date, UIPageViewController.NavigationDirection) -> ())?) -> ApodContentViewController {
+    static func fromStoryBoard(apod: Apod, dateSelectAction: ((Date, UIPageViewController.NavigationDirection) -> ())?) -> ApodContentViewController {
         let sb = UIStoryboard(name: "Main", bundle: .main)
         let vc: ApodContentViewController = sb.instantiateViewController(identifier: "ApodContentViewController")
         vc.apod = apod
-        vc.didSelectDate = didSelectDate
+        vc.dateSelectAction = dateSelectAction
         return vc
     }
 
@@ -119,7 +119,7 @@ class ApodContentViewController: UIViewController {
         let selectedDate = self.apodDatePickerView.date
         if date != selectedDate {
             let direction: UIPageViewController.NavigationDirection = date > selectedDate ? .reverse : .forward
-            self.didSelectDate?(self.apodDatePickerView.date, direction)
+            self.dateSelectAction?(self.apodDatePickerView.date, direction)
         }
     }
 

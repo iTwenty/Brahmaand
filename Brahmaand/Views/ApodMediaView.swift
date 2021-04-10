@@ -47,21 +47,32 @@ class ApodMediaView: UIView {
                                                downloadTaskUpdated: nil) { [weak self] (result) in
             switch result {
             case .success(let imageResult):
-                self?.resize(imageResult.image)
+                self?.showImage(imageResult.image)
             case .failure(let error):
                 print(error.localizedDescription)
             }
         }
     }
 
-    private func resize(_ image: UIImage) {
+    private func showImage(_ image: UIImage) {
+        imageView.image = resized(image)
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didTapImage(_:)))
+        tapGesture.numberOfTapsRequired = 1
+        imageView.addGestureRecognizer(tapGesture)
+    }
+
+    private func resized(_ image: UIImage) -> UIImage {
         let imageWidth = image.size.width
         let imageViewWidth = imageView.bounds.size.width
         let resizeFactor = imageWidth / imageViewWidth
         if resizeFactor <= 1.0 {
-            imageView.image = image
+            return image
         } else {
-            imageView.image = image.resized(size: CGSize(width: imageViewWidth, height: image.size.height * resizeFactor))
+            return image.resized(size: CGSize(width: imageViewWidth, height: image.size.height * resizeFactor))
         }
+    }
+
+    @objc private func didTapImage(_ sender: Any) {
+        print("image tapped")
     }
 }

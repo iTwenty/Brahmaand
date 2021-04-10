@@ -12,12 +12,12 @@ class ApodPageViewController: UIPageViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.dataSource = self
-        let apodVc = ApodContainerViewController(date: Date(), didSelectDate: jumpToDate(_:_:))
+        let apodVc = ApodContainerViewController(date: Date(), dateSelectAction: jumpToDate(_:_:))
         self.setViewControllers([apodVc], direction: .reverse, animated: false, completion: nil)
     }
 
     func jumpToDate(_ date: Date, _ direction: UIPageViewController.NavigationDirection) {
-        let apodVc = ApodContainerViewController(date: date, didSelectDate: jumpToDate(_:_:))
+        let apodVc = ApodContainerViewController(date: date, dateSelectAction: jumpToDate(_:_:))
         self.setViewControllers([apodVc], direction: direction, animated: true, completion: nil)
     }
 }
@@ -37,7 +37,7 @@ extension ApodPageViewController: UIPageViewControllerDataSource {
         guard comparison == .orderedSame || comparison == .orderedAscending else {
             return nil
         }
-        let apodVc = ApodContainerViewController(date: beforeDate, didSelectDate: jumpToDate(_:_:))
+        let apodVc = ApodContainerViewController(date: beforeDate, dateSelectAction: jumpToDate(_:_:))
         return apodVc
     }
 
@@ -53,7 +53,7 @@ extension ApodPageViewController: UIPageViewControllerDataSource {
         guard comparison == .orderedSame || comparison == .orderedAscending else {
             return nil
         }
-        let apodVc = ApodContainerViewController(date: afterDate, didSelectDate: jumpToDate(_:_:))
+        let apodVc = ApodContainerViewController(date: afterDate, dateSelectAction: jumpToDate(_:_:))
         return apodVc
     }
 }

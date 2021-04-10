@@ -25,7 +25,7 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="zgL-pQ-WBz" userLabel="Apod Stack">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="610.5"/>
                                         <subviews>
-                                            <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6IF-vI-Yan" customClass="ApodMediaView" customModule="Brahmaand" customModuleProvider="target">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6IF-vI-Yan" customClass="ApodMediaView" customModule="Brahmaand" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="374" height="210.5"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>

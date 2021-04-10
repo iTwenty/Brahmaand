@@ -11,11 +11,11 @@ class ApodContainerViewController: UIViewController {
     private var state: State?
     private var shownVc: UIViewController?
     var date: Date
-    var didSelectDate: ((Date, UIPageViewController.NavigationDirection) -> ())
+    var dateSelectAction: ((Date, UIPageViewController.NavigationDirection) -> ())
 
-    init(date: Date, didSelectDate: @escaping ((Date, UIPageViewController.NavigationDirection) -> ())) {
+    init(date: Date, dateSelectAction: @escaping ((Date, UIPageViewController.NavigationDirection) -> ())) {
         self.date = date
-        self.didSelectDate = didSelectDate
+        self.dateSelectAction = dateSelectAction
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -62,7 +62,7 @@ class ApodContainerViewController: UIViewController {
             print(error.localizedDescription)
             return ApodFailureViewController.fromStoryBoard()
         case .success(let apod):
-            return ApodContentViewController.fromStoryBoard(apod: apod, didSelectDate: didSelectDate)
+            return ApodContentViewController.fromStoryBoard(apod: apod, dateSelectAction: dateSelectAction)
         }
     }
 }
