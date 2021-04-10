@@ -55,16 +55,19 @@ class ApodContentViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        resetViews()
+        setupViews()
         showApod()
     }
 
-    private func resetViews() {
+    private func setupViews() {
         apodTitleLabel.text = nil
         apodExplanationTextView.text = nil
         apodDateButton.setTitle(nil, for: .normal)
         apodDateButton.inputView = apodDatePickerView
         apodDateButton.inputAccessoryView = apodDatePickerToolbar
+        apodMediaView.imageTapAction = { [weak self] in
+            self?.showFullScreenImage()
+        }
     }
 
     private func showApod() {
@@ -94,6 +97,11 @@ class ApodContentViewController: UIViewController {
         } else {
             // TODO some other video site. load in wkwebview??
         }
+    }
+
+    private func showFullScreenImage() {
+        guard let apod = apod else { return }
+        ApodNavigator.shared.showFullScreenImage(apod: apod, presenter: self)
     }
 
     @IBAction func didClickApodDateButton(_ sender: Any) {

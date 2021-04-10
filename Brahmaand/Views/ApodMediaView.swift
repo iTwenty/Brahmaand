@@ -14,6 +14,8 @@ class ApodMediaView: UIView {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var contentView: UIView!
 
+    var imageTapAction: (() -> ())?
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()
@@ -73,6 +75,6 @@ class ApodMediaView: UIView {
     }
 
     @objc private func didTapImage(_ sender: Any) {
-        print("image tapped")
+        imageTapAction?()
     }
 }
