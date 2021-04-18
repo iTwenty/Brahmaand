@@ -62,7 +62,7 @@ VALUES (?, ?, ?, ?, ?, ?, ?)
         }
     }
 
-    func fetchApod(forDate date: Date, options: FetchOptions?, completion: @escaping (Result<Apod, Error>) -> ()) {
+    func fetchApod(forDate date: Date, completion: @escaping (Result<Apod, Error>) -> ()) {
         let fetchQuery = "SELECT * FROM \(DbInfo.TableApods.name) WHERE \(DbInfo.TableApods.col_date) = ?"
         let params = [date.apodApiFormatted()]
         do {
@@ -79,7 +79,7 @@ VALUES (?, ?, ?, ?, ?, ?, ?)
         }
     }
 
-    func fetchApods(startDate: Date, endDate: Date, options: FetchOptions?, completion: @escaping (Result<[Apod], Error>) -> ()) {
+    func fetchApods(startDate: Date, endDate: Date, completion: @escaping (Result<[Apod], Error>) -> ()) {
         let fetchQuery = "SELECT * FROM \(DbInfo.TableApods.name) WHERE \(DbInfo.TableApods.col_date) >= ? AND \(DbInfo.TableApods.col_date) <= ?"
         let params = [startDate.apodApiFormatted(), endDate.apodApiFormatted()]
         do {

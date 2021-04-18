@@ -10,11 +10,12 @@ import UIKit
 class ApodContainerViewController: UIViewController {
     private var state: State?
     private var shownVc: UIViewController?
-    var date: Date
+
+    var fetchType: FetchType
     var dateSelectAction: ((Date, UIPageViewController.NavigationDirection) -> ())
 
-    init(date: Date, dateSelectAction: @escaping ((Date, UIPageViewController.NavigationDirection) -> ())) {
-        self.date = date
+    init(fetchType: FetchType, dateSelectAction: @escaping ((Date, UIPageViewController.NavigationDirection) -> ())) {
+        self.fetchType = fetchType
         self.dateSelectAction = dateSelectAction
         super.init(nibName: nil, bundle: nil)
     }
@@ -40,7 +41,7 @@ class ApodContainerViewController: UIViewController {
 
     private func fetchApod() {
         setState(.loading, animated: false)
-        ApodCompositeFetcher.fetchApod(forDate: date, options: nil) { (result) in
+        ApodCompositeFetcher.fetchApod(fetchType: fetchType, options: nil) { (result) in
             switch result {
             case .success(let apod):
                 DispatchQueue.main.async {

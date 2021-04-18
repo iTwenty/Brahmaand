@@ -25,7 +25,7 @@ final class ApodApiFetcher: ApodFetcher {
         return decoder
     }()
 
-    func fetchApod(forDate date: Date, options: FetchOptions?, completion: @escaping (Result<Apod, Error>) -> Void) {
+    func fetchApod(forDate date: Date, completion: @escaping (Result<Apod, Error>) -> Void) {
         guard var urlComponents = URLComponents(string: baseUrl) else {
             completion(.failure(ApiError.invalidUrl))
             return
@@ -44,7 +44,7 @@ final class ApodApiFetcher: ApodFetcher {
         fetch(request: request, completion: completion)
     }
 
-    func fetchApods(startDate: Date, endDate: Date, options: FetchOptions?, completion: @escaping (Result<[Apod], Error>) -> ()) {
+    func fetchApods(startDate: Date, endDate: Date, completion: @escaping (Result<[Apod], Error>) -> ()) {
         guard var urlComponents = URLComponents(string: baseUrl) else {
             completion(.failure(ApiError.invalidUrl))
             return
