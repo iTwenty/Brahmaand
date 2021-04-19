@@ -11,6 +11,7 @@
             <connections>
                 <outlet property="contentView" destination="iN0-l3-epB" id="gei-ej-rr2"/>
                 <outlet property="imageView" destination="3Rd-7U-Is7" id="qIl-ak-Slu"/>
+                <outlet property="loadingContainerView" destination="IPv-Aq-QdK" id="q3E-bV-3J1"/>
                 <outlet property="youtubeView" destination="taO-8D-Awk" id="u7E-ey-foA"/>
             </connections>
         </placeholder>
@@ -26,17 +27,34 @@
                     <rect key="frame" x="0.0" y="0.0" width="576" height="323"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IPv-Aq-QdK" userLabel="Loading Container View">
+                    <rect key="frame" x="0.0" y="0.0" width="576" height="323"/>
+                    <subviews>
+                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="zVU-do-BPn" userLabel="Loading View">
+                            <rect key="frame" x="269.5" y="143" width="37" height="37"/>
+                        </activityIndicatorView>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="zVU-do-BPn" firstAttribute="centerY" secondItem="IPv-Aq-QdK" secondAttribute="centerY" id="7y6-0I-D6Q"/>
+                        <constraint firstItem="zVU-do-BPn" firstAttribute="centerX" secondItem="IPv-Aq-QdK" secondAttribute="centerX" id="ncW-7a-9Jl"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
+                <constraint firstItem="IPv-Aq-QdK" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="0Kb-ev-NK7"/>
                 <constraint firstItem="taO-8D-Awk" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="7a3-5A-ts9"/>
                 <constraint firstAttribute="bottom" secondItem="taO-8D-Awk" secondAttribute="bottom" id="9VC-xy-IqF"/>
+                <constraint firstAttribute="bottom" secondItem="IPv-Aq-QdK" secondAttribute="bottom" id="Hi6-aA-7UB"/>
                 <constraint firstItem="3Rd-7U-Is7" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="VqC-aX-AKc"/>
                 <constraint firstItem="3Rd-7U-Is7" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="YYS-FX-MyL"/>
                 <constraint firstAttribute="bottom" secondItem="3Rd-7U-Is7" secondAttribute="bottom" id="hbs-tC-kme"/>
                 <constraint firstAttribute="trailing" secondItem="taO-8D-Awk" secondAttribute="trailing" id="oXg-Bj-J64"/>
+                <constraint firstItem="IPv-Aq-QdK" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="qGZ-52-XQB"/>
                 <constraint firstItem="taO-8D-Awk" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="sCD-RB-n36"/>
                 <constraint firstAttribute="trailing" secondItem="3Rd-7U-Is7" secondAttribute="trailing" id="t38-Id-4D5"/>
+                <constraint firstAttribute="trailing" secondItem="IPv-Aq-QdK" secondAttribute="trailing" id="z25-ZM-TVK"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="257.97101449275362" y="-100.11160714285714"/>

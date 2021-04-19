@@ -13,6 +13,7 @@ class ApodMediaView: UIView {
 
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var youtubeView: WKYTPlayerView!
+    @IBOutlet weak var loadingContainerView: UIView!
     @IBOutlet weak var contentView: UIView!
 
     var imageTapAction: (() -> ())?
@@ -44,12 +45,16 @@ class ApodMediaView: UIView {
     func loadYoutubeVideo(videoCode: String) {
         self.youtubeView.isHidden = false
         self.imageView.isHidden = true
+        self.loadingContainerView.isHidden = true
+
         self.youtubeView.load(withVideoId: videoCode)
     }
 
-    func loadImage(url: URL) {
+    func loadImage(url: URL, completion: (() -> ())? = nil) {
+        self.loadingContainerView.isHidden = false
         self.youtubeView.isHidden = true
-        self.imageView.isHidden = false
+        self.imageView.isHidden = true
+
         KingfisherManager.shared.retrieveImage(with: url,
                                                options: [.scaleFactor(UIScreen.main.scale),
                                                          .transition(.fade(1)),
@@ -59,6 +64,7 @@ class ApodMediaView: UIView {
             switch result {
             case .success(let imageResult):
                 self?.showImage(imageResult.image)
+                completion?()
             case .failure(let error):
                 print(error.localizedDescription)
             }
@@ -66,6 +72,10 @@ class ApodMediaView: UIView {
     }
 
     private func showImage(_ image: UIImage) {
+        self.imageView.isHidden = false
+        self.loadingContainerView.isHidden = true
+        self.youtubeView.isHidden = true
+
         let imageWidth = image.size.width
         let imageHeight = image.size.height
 

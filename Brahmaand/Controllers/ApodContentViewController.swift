@@ -86,8 +86,9 @@ class ApodContentViewController: UIViewController {
     }
 
     private func loadImage(url: URL) {
-        self.apodMediaViewHeightConstraint.isActive = false
-        self.apodMediaView.loadImage(url: url)
+        self.apodMediaView.loadImage(url: url) {
+            self.apodMediaViewHeightConstraint.isActive = false
+        }
     }
 
     private func loadVideo(url: URL) {

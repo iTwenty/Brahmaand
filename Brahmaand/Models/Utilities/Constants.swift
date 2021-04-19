@@ -13,12 +13,14 @@ struct Constants {
 
         static let apodApiFormatter: DateFormatter = {
             let formatter = DateFormatter()
+            formatter.calendar = Calendars.apodCalendar
             formatter.dateFormat = "yyyy-MM-dd"
             return formatter
         }()
 
         static let displayFormatter: DateFormatter = {
             let formatter = DateFormatter()
+            formatter.calendar = Calendars.apodCalendar
             formatter.dateFormat = "dd MMM yyyy"
             return formatter
         }()
