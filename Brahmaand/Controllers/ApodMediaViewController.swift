@@ -29,27 +29,35 @@ class ApodMediaViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        imageView.kf.setImage(with: apod?.url)
+        guard let imgUrl = apod?.url else { return }
+        KingfisherManager.shared.retrieveImage(with: imgUrl) { [weak self] (result) in
+            switch result {
+            case .success(let imageResult):
+                self?.showImage(imageResult.image)
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
         scrollView.delegate = self
     }
 
-    override func viewWillLayoutSubviews() {
-        super.viewWillLayoutSubviews()
+    private func showImage(_ image: UIImage) {
+        self.imageView.image = image
         updateMinZoomScale(forSize: view.bounds.size)
         //updateConstraints(forSize: view.bounds.size)
     }
 
-    func updateMinZoomScale(forSize size: CGSize) {
+    private func updateMinZoomScale(forSize size: CGSize) {
         let widthScale = size.width / imageView.bounds.width
         let heightScale = size.height / imageView.bounds.height
         let minScale = min(widthScale, heightScale)
 
-        scrollView.minimumZoomScale = minScale
+        scrollView.minimumZoomScale = min(1, minScale)
         scrollView.maximumZoomScale = 2
         scrollView.zoomScale = minScale
     }
 
-    func updateConstraints(forSize size: CGSize) {
+    private func updateConstraints(forSize size: CGSize) {
         let yOffset = max(0, (size.height - imageView.bounds.height) / 2)
         imageViewTopConstraint.constant = yOffset
         imageViewBottomConstraint.constant = yOffset
@@ -57,8 +65,6 @@ class ApodMediaViewController: UIViewController {
         let xOffset = max(0, (size.width - imageView.bounds.width) / 2)
         imageViewLeadingConstraint.constant = xOffset
         imageViewTrailingConstraint.constant = xOffset
-
-        view.layoutIfNeeded()
     }
 }
 

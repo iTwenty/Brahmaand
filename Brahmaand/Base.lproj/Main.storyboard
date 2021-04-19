@@ -125,10 +125,10 @@
                         <viewLayoutGuide key="safeArea" id="L3L-ww-Ng1"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="Vu4-Z2-eIE" firstAttribute="top" secondItem="v67-Qc-cRC" secondAttribute="topMargin" id="BcS-aK-vMx"/>
-                            <constraint firstAttribute="bottomMargin" secondItem="Vu4-Z2-eIE" secondAttribute="bottom" id="DVc-G6-6iL"/>
-                            <constraint firstItem="Vu4-Z2-eIE" firstAttribute="leading" secondItem="v67-Qc-cRC" secondAttribute="leadingMargin" id="HNT-eX-HpO"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Vu4-Z2-eIE" secondAttribute="trailing" id="d0M-Cz-wMf"/>
+                            <constraint firstItem="Vu4-Z2-eIE" firstAttribute="top" secondItem="v67-Qc-cRC" secondAttribute="top" id="BcS-aK-vMx"/>
+                            <constraint firstAttribute="bottom" secondItem="Vu4-Z2-eIE" secondAttribute="bottom" id="DVc-G6-6iL"/>
+                            <constraint firstItem="Vu4-Z2-eIE" firstAttribute="leading" secondItem="v67-Qc-cRC" secondAttribute="leading" id="HNT-eX-HpO"/>
+                            <constraint firstAttribute="trailing" secondItem="Vu4-Z2-eIE" secondAttribute="trailing" id="d0M-Cz-wMf"/>
                         </constraints>
                     </view>
                     <connections>
