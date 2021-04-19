@@ -11,6 +11,7 @@
             <connections>
                 <outlet property="contentView" destination="iN0-l3-epB" id="gei-ej-rr2"/>
                 <outlet property="imageView" destination="3Rd-7U-Is7" id="qIl-ak-Slu"/>
+                <outlet property="youtubeView" destination="taO-8D-Awk" id="u7E-ey-foA"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -21,12 +22,20 @@
                 <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3Rd-7U-Is7">
                     <rect key="frame" x="0.0" y="0.0" width="576" height="323"/>
                 </imageView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="taO-8D-Awk" userLabel="Youtube View" customClass="WKYTPlayerView">
+                    <rect key="frame" x="0.0" y="0.0" width="576" height="323"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </view>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
+                <constraint firstItem="taO-8D-Awk" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="7a3-5A-ts9"/>
+                <constraint firstAttribute="bottom" secondItem="taO-8D-Awk" secondAttribute="bottom" id="9VC-xy-IqF"/>
                 <constraint firstItem="3Rd-7U-Is7" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="VqC-aX-AKc"/>
                 <constraint firstItem="3Rd-7U-Is7" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="YYS-FX-MyL"/>
                 <constraint firstAttribute="bottom" secondItem="3Rd-7U-Is7" secondAttribute="bottom" id="hbs-tC-kme"/>
+                <constraint firstAttribute="trailing" secondItem="taO-8D-Awk" secondAttribute="trailing" id="oXg-Bj-J64"/>
+                <constraint firstItem="taO-8D-Awk" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="sCD-RB-n36"/>
                 <constraint firstAttribute="trailing" secondItem="3Rd-7U-Is7" secondAttribute="trailing" id="t38-Id-4D5"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>

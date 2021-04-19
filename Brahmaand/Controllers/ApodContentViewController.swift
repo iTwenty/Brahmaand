@@ -15,6 +15,8 @@ class ApodContentViewController: UIViewController {
     @IBOutlet weak var apodDateButton: InputButton!
     @IBOutlet weak var apodExplanationTextView: UITextView!
 
+    @IBOutlet weak var apodMediaViewHeightConstraint: NSLayoutConstraint!
+
     private lazy var apodDatePickerView: UIDatePicker = {
         let view = UIDatePicker()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -84,16 +86,16 @@ class ApodContentViewController: UIViewController {
     }
 
     private func loadImage(url: URL) {
+        self.apodMediaViewHeightConstraint.isActive = false
         self.apodMediaView.loadImage(url: url)
     }
 
     private func loadVideo(url: URL) {
+        self.apodMediaViewHeightConstraint.isActive = true
         guard let host = url.host else { return }
         if host.contains("youtube") {
             let videoCode = url.lastPathComponent
-            let imgUrlString = "https://img.youtube.com/vi/\(videoCode)/maxresdefault.jpg"
-            guard let imgUrl = URL(string: imgUrlString) else { return }
-            loadImage(url: imgUrl)
+            self.apodMediaView.loadYoutubeVideo(videoCode: videoCode)
         } else {
             // TODO some other video site. load in wkwebview??
         }

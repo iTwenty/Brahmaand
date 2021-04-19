@@ -12,6 +12,7 @@ import YoutubePlayer_in_WKWebView
 class ApodMediaView: UIView {
 
     @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var youtubeView: WKYTPlayerView!
     @IBOutlet weak var contentView: UIView!
 
     var imageTapAction: (() -> ())?
@@ -40,7 +41,15 @@ class ApodMediaView: UIView {
         imageView.contentMode = .scaleAspectFill
     }
 
+    func loadYoutubeVideo(videoCode: String) {
+        self.youtubeView.isHidden = false
+        self.imageView.isHidden = true
+        self.youtubeView.load(withVideoId: videoCode)
+    }
+
     func loadImage(url: URL) {
+        self.youtubeView.isHidden = true
+        self.imageView.isHidden = false
         KingfisherManager.shared.retrieveImage(with: url,
                                                options: [.scaleFactor(UIScreen.main.scale),
                                                          .transition(.fade(1)),
@@ -57,21 +66,18 @@ class ApodMediaView: UIView {
     }
 
     private func showImage(_ image: UIImage) {
-        imageView.image = resized(image)
+        let imageWidth = image.size.width
+        let imageHeight = image.size.height
+
+        let imageViewWidth = imageView.bounds.size.width
+        let imageScaleRatio = imageViewWidth / imageWidth
+
+        let resizedImage = image.resized(size: CGSize(width: imageWidth * imageScaleRatio, height: imageHeight * imageScaleRatio))
+        imageView.image = resizedImage
+
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didTapImage(_:)))
         tapGesture.numberOfTapsRequired = 1
         imageView.addGestureRecognizer(tapGesture)
-    }
-
-    private func resized(_ image: UIImage) -> UIImage {
-        let imageWidth = image.size.width
-        let imageViewWidth = imageView.bounds.size.width
-        let resizeFactor = imageWidth / imageViewWidth
-        if resizeFactor <= 1.0 {
-            return image
-        } else {
-            return image.resized(size: CGSize(width: imageViewWidth, height: image.size.height * resizeFactor))
-        }
     }
 
     @objc private func didTapImage(_ sender: Any) {

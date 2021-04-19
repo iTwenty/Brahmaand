@@ -29,7 +29,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="233"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" secondItem="6IF-vI-Yan" secondAttribute="height" multiplier="16:9" placeholder="YES" id="2PY-pe-tgd"/>
+                                                    <constraint firstAttribute="width" secondItem="6IF-vI-Yan" secondAttribute="height" multiplier="16:9" id="2PY-pe-tgd"/>
                                                 </constraints>
                                             </view>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="hjx-l1-0cL" userLabel="Apod Details Stack">
@@ -41,7 +41,7 @@
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xgx-Eu-N1g" userLabel="Apod Date Button" customClass="InputButton" customModule="Brahmaand" customModuleProvider="target">
+                                                    <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xgx-Eu-N1g" userLabel="Apod Date Button" customClass="InputButton" customModule="Brahmaand" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="49" width="414" height="33"/>
                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                         <state key="normal" title="Button"/>
@@ -51,7 +51,7 @@
                                                     </button>
                                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" layoutMarginsFollowReadableWidth="YES" scrollEnabled="NO" editable="NO" textAlignment="natural" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sia-sH-Eic" userLabel="Apod Explanation">
                                                         <rect key="frame" x="0.0" y="90" width="414" height="258"/>
-                                                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                                        <mutableString key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
                                                         <color key="textColor" systemColor="labelColor"/>
                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -88,6 +88,7 @@
                         <outlet property="apodDateButton" destination="Xgx-Eu-N1g" id="VzY-6L-Cf4"/>
                         <outlet property="apodExplanationTextView" destination="sia-sH-Eic" id="003-rK-lte"/>
                         <outlet property="apodMediaView" destination="6IF-vI-Yan" id="A76-kj-vBm"/>
+                        <outlet property="apodMediaViewHeightConstraint" destination="2PY-pe-tgd" id="pfJ-ZE-TZf"/>
                         <outlet property="apodTitleLabel" destination="2lG-JM-1Kz" id="TD5-PI-g7Z"/>
                         <outlet property="scrollView" destination="pzP-wz-TMJ" id="sNa-Vw-J0d"/>
                     </connections>
