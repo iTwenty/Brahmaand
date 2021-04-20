@@ -86,8 +86,9 @@ class ApodContentViewController: UIViewController {
     }
 
     private func loadImage(url: URL) {
-        self.apodMediaView.loadImage(url: url) {
+        self.apodMediaView.loadImage(url: url) { (image) in
             self.apodMediaViewHeightConstraint.isActive = false
+            self.setBackgroundColor(fromImage: image)
         }
     }
 
@@ -140,6 +141,7 @@ class ApodContentViewController: UIViewController {
             UIView.animate(withDuration: 0.1) {
                 self?.view.backgroundColor = colors.background
                 self?.apodTitleLabel.textColor = colors.primary
+                self?.apodDateButton.setTitleColor(colors.secondary, for: .normal)
                 self?.apodExplanationTextView.textColor = colors.detail
             }
         }

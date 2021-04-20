@@ -50,7 +50,7 @@ class ApodMediaView: UIView {
         self.youtubeView.load(withVideoId: videoCode)
     }
 
-    func loadImage(url: URL, completion: (() -> ())? = nil) {
+    func loadImage(url: URL, completion: ((UIImage) -> ())? = nil) {
         self.loadingContainerView.isHidden = false
         self.youtubeView.isHidden = true
         self.imageView.isHidden = true
@@ -64,7 +64,7 @@ class ApodMediaView: UIView {
             switch result {
             case .success(let imageResult):
                 self?.showImage(imageResult.image)
-                completion?()
+                completion?(imageResult.image)
             case .failure(let error):
                 print(error.localizedDescription)
             }
