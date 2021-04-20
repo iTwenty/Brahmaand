@@ -51,7 +51,7 @@
                                                     </button>
                                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" layoutMarginsFollowReadableWidth="YES" scrollEnabled="NO" editable="NO" textAlignment="natural" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sia-sH-Eic" userLabel="Apod Explanation">
                                                         <rect key="frame" x="0.0" y="90" width="414" height="258"/>
-                                                        <mutableString key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
+                                                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                                         <color key="textColor" systemColor="labelColor"/>
                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -133,10 +133,6 @@
                     </view>
                     <connections>
                         <outlet property="imageView" destination="gWp-tW-4NP" id="cK5-sF-Kyy"/>
-                        <outlet property="imageViewBottomConstraint" destination="9JN-0B-Z3K" id="VDL-45-5Cb"/>
-                        <outlet property="imageViewLeadingConstraint" destination="LgS-pg-c9e" id="TOz-wk-bke"/>
-                        <outlet property="imageViewTopConstraint" destination="iCv-L8-cDv" id="RcL-m0-Hr6"/>
-                        <outlet property="imageViewTrailingConstraint" destination="Sak-3Q-ZYO" id="zHj-qn-KwG"/>
                         <outlet property="scrollView" destination="Vu4-Z2-eIE" id="1vN-iu-lVf"/>
                     </connections>
                 </viewController>
