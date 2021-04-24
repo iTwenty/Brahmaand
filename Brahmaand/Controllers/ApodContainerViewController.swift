@@ -12,11 +12,9 @@ class ApodContainerViewController: UIViewController {
     private var shownVc: UIViewController?
 
     var fetchType: FetchType
-    var dateSelectAction: ((Date, UIPageViewController.NavigationDirection) -> ())
 
-    init(fetchType: FetchType, dateSelectAction: @escaping ((Date, UIPageViewController.NavigationDirection) -> ())) {
+    init(fetchType: FetchType) {
         self.fetchType = fetchType
-        self.dateSelectAction = dateSelectAction
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -63,7 +61,7 @@ class ApodContainerViewController: UIViewController {
             print(error.localizedDescription)
             return ApodFailureViewController.fromStoryBoard()
         case .success(let apod):
-            return ApodContentViewController.fromStoryBoard(apod: apod, dateSelectAction: dateSelectAction)
+            return ApodContentViewController.fromStoryBoard(apod: apod)
         }
     }
 }

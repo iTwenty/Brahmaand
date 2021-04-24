@@ -13,8 +13,4 @@ class ApodFailureViewController: UIViewController {
         let sb = UIStoryboard(name: "Main", bundle: .main)
         return sb.instantiateViewController(identifier: "ApodFailureViewController")
     }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
 }
