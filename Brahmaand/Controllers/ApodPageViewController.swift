@@ -44,6 +44,12 @@ class ApodPageViewController: UIPageViewController {
         return button
     }()
 
+    private lazy var favoriteButton: UIBarButtonItem = {
+        let heartIcon = UIImage(systemName: "heart")
+        let button = UIBarButtonItem(image: heartIcon, style: .plain, target: self, action: #selector(didClickFavoriteButton(_:)))
+        return button
+    }()
+
     private var currentShownApodDate = Date() {
         didSet {
             apodDateTitleButton.setTitle(currentShownApodDate.displayFormatted(), for: .normal)
@@ -57,6 +63,7 @@ class ApodPageViewController: UIPageViewController {
         let apodVc = ApodContainerViewController(fetchType: .before(date: currentShownApodDate))
         setViewControllers([apodVc], direction: .reverse, animated: false, completion: nil)
         navigationItem.titleView = apodDateTitleButton
+        navigationItem.rightBarButtonItem = favoriteButton
         apodDateTitleButton.setTitle(currentShownApodDate.displayFormatted(), for: .normal)
     }
 
@@ -80,6 +87,10 @@ class ApodPageViewController: UIPageViewController {
             setViewControllers([apodVc], direction: direction, animated: true, completion: nil)
             currentShownApodDate = selectedDate
         }
+    }
+
+    @objc func didClickFavoriteButton(_ sender: Any) {
+        print("favorited")
     }
 }
 
