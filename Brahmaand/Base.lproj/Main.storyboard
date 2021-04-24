@@ -142,30 +142,102 @@
                     </tabBar>
                     <connections>
                         <segue destination="2JO-5q-G5u" kind="relationship" relationship="viewControllers" id="Qdn-QN-c25"/>
-                        <segue destination="sQW-c4-yAp" kind="relationship" relationship="viewControllers" id="g93-cr-kFu"/>
+                        <segue destination="wsd-jo-iXn" kind="relationship" relationship="viewControllers" id="M1M-ai-iqs"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IiY-nZ-5KV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-2312" y="1273"/>
         </scene>
-        <!--Favourites-->
-        <scene sceneID="3B4-pU-HD9">
+        <!--Favorites-->
+        <scene sceneID="6MT-zr-Mfd">
             <objects>
-                <viewController id="sQW-c4-yAp" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Jzs-Xc-exO">
+                <viewController storyboardIdentifier="ApodFavoritesContainerViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="wsd-jo-iXn" customClass="ApodFavoritesContainerViewController" customModule="Brahmaand" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="YAz-Pv-Ojr">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="nKl-vT-bbv"/>
+                        <viewLayoutGuide key="safeArea" id="pFY-VN-Qfy"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Favourites" id="oqP-ro-sle">
+                    <tabBarItem key="tabBarItem" title="Favorites" id="hwD-UJ-3WO">
                         <imageReference key="image" image="heart.fill" catalog="system" symbolScale="default"/>
                     </tabBarItem>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9VX-AU-mt6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1193" y="1782"/>
+        </scene>
+        <!--Apod Favorites Content View Controller-->
+        <scene sceneID="3B4-pU-HD9">
+            <objects>
+                <viewController storyboardIdentifier="ApodFavoritesViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="sQW-c4-yAp" customClass="ApodFavoritesContentViewController" customModule="Brahmaand" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Jzs-Xc-exO">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="YWC-zB-923">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="rF1-eo-eUj">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                            </collectionView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="nKl-vT-bbv"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="YWC-zB-923" secondAttribute="trailing" id="HrA-9d-TxA"/>
+                            <constraint firstItem="YWC-zB-923" firstAttribute="top" secondItem="Jzs-Xc-exO" secondAttribute="top" id="deI-TA-hSE"/>
+                            <constraint firstItem="YWC-zB-923" firstAttribute="leading" secondItem="Jzs-Xc-exO" secondAttribute="leading" id="ouk-2h-zAe"/>
+                            <constraint firstAttribute="bottom" secondItem="YWC-zB-923" secondAttribute="bottom" id="wHn-2c-zWM"/>
+                        </constraints>
+                    </view>
+                </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="M7v-6C-zdU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-890" y="2146"/>
+            <point key="canvasLocation" x="194" y="1712"/>
+        </scene>
+        <!--Apod Favorites Empty View Controller-->
+        <scene sceneID="OiX-md-fUT">
+            <objects>
+                <viewController storyboardIdentifier="ApodFavoritesEmptyViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="y3s-GI-XxR" customClass="ApodFavoritesEmptyViewController" customModule="Brahmaand" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="EAC-bj-jKp">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="h5z-qh-zPa">
+                                <rect key="frame" x="39.5" y="422" width="335" height="62"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nothing to see here!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2dO-mv-fmi">
+                                        <rect key="frame" x="0.0" y="0.0" width="335" height="33.5"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Click the heart icon to add items to favorites" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cdQ-d4-axX">
+                                        <rect key="frame" x="0.0" y="41.5" width="335" height="20.5"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="WiL-Kk-FDI"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="h5z-qh-zPa" firstAttribute="centerX" secondItem="WiL-Kk-FDI" secondAttribute="centerX" id="Uea-6F-AfJ"/>
+                            <constraint firstItem="h5z-qh-zPa" firstAttribute="centerY" secondItem="WiL-Kk-FDI" secondAttribute="centerY" id="d7q-b8-AHs"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zEc-QL-IGF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="224" y="2377"/>
         </scene>
         <!--Daily-->
         <scene sceneID="68Q-XT-wY7">
@@ -186,10 +258,10 @@
             </objects>
             <point key="canvasLocation" x="-1510" y="364"/>
         </scene>
-        <!--Daily-->
+        <!--Apod Page View Controller-->
         <scene sceneID="sJV-4F-7vJ">
             <objects>
-                <pageViewController storyboardIdentifier="ApodPageViewController" autoresizesArchivedViewToFullSize="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="Lsa-tU-Qo2" customClass="ApodPageViewController" customModule="Brahmaand" customModuleProvider="target" sceneMemberID="viewController">
+                <pageViewController storyboardIdentifier="ApodPageViewController" autoresizesArchivedViewToFullSize="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="Lsa-tU-Qo2" userLabel="Apod Page View Controller" customClass="ApodPageViewController" customModule="Brahmaand" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Daily" id="pNa-c5-cbA">
                         <imageReference key="image" image="globe" catalog="system" symbolScale="default"/>
                     </tabBarItem>
