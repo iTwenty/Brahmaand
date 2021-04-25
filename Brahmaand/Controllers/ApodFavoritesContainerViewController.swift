@@ -13,7 +13,7 @@ class ApodFavoritesContainerViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let vc = ApodFavoritesEmptyViewController.fromStoryBoard()
+        let vc = ApodFavoritesContentViewController.fromStoryBoard()
         self.addChild(vc)
         vc.view.pin(to: view)
         vc.didMove(toParent: self)

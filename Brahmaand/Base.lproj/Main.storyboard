@@ -170,7 +170,7 @@
         <!--Apod Favorites Content View Controller-->
         <scene sceneID="3B4-pU-HD9">
             <objects>
-                <viewController storyboardIdentifier="ApodFavoritesViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="sQW-c4-yAp" customClass="ApodFavoritesContentViewController" customModule="Brahmaand" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ApodFavoritesContentViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="sQW-c4-yAp" customClass="ApodFavoritesContentViewController" customModule="Brahmaand" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Jzs-Xc-exO">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -196,6 +196,9 @@
                             <constraint firstAttribute="bottom" secondItem="YWC-zB-923" secondAttribute="bottom" id="wHn-2c-zWM"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="apodFavoritesCollectionView" destination="YWC-zB-923" id="Xtb-4Z-dBg"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="M7v-6C-zdU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

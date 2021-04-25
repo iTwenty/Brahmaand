@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ApodCell" id="gTV-IL-0wX" customClass="ApodCell" customModule="Brahmaand" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="217" height="234"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="217" height="234"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aWE-Sk-XPV">
+                        <rect key="frame" x="0.0" y="169" width="217" height="65"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Hx8-Mw-grr">
+                        <rect key="frame" x="0.0" y="44" width="217" height="190"/>
+                    </imageView>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="lVU-As-cJx">
+                        <rect key="frame" x="0.0" y="169" width="217" height="65"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="APOD Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lZZ-dn-Qbv">
+                                <rect key="frame" x="8" y="8" width="201" height="26.5"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="APOD Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p40-8H-NZN">
+                                <rect key="frame" x="8" y="42.5" width="201" height="14.5"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <directionalEdgeInsets key="directionalLayoutMargins" top="8" leading="8" bottom="8" trailing="8"/>
+                    </stackView>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstItem="lVU-As-cJx" firstAttribute="trailing" secondItem="Hx8-Mw-grr" secondAttribute="trailing" id="46b-VA-d9J"/>
+                <constraint firstItem="ZTg-uK-7eu" firstAttribute="bottom" secondItem="Hx8-Mw-grr" secondAttribute="bottom" id="LDy-dM-Yac"/>
+                <constraint firstItem="aWE-Sk-XPV" firstAttribute="top" secondItem="lVU-As-cJx" secondAttribute="top" id="Lij-Jv-4rM"/>
+                <constraint firstItem="aWE-Sk-XPV" firstAttribute="bottom" secondItem="lVU-As-cJx" secondAttribute="bottom" id="Mn4-72-Rvp"/>
+                <constraint firstItem="Hx8-Mw-grr" firstAttribute="trailing" secondItem="ZTg-uK-7eu" secondAttribute="trailing" id="RkB-Lk-WwO"/>
+                <constraint firstItem="lVU-As-cJx" firstAttribute="leading" secondItem="Hx8-Mw-grr" secondAttribute="leading" id="WG7-Uw-lVL"/>
+                <constraint firstItem="aWE-Sk-XPV" firstAttribute="leading" secondItem="lVU-As-cJx" secondAttribute="leading" id="YSL-7E-v4G"/>
+                <constraint firstItem="ZTg-uK-7eu" firstAttribute="leading" secondItem="Hx8-Mw-grr" secondAttribute="leading" id="cDn-h4-Fp7"/>
+                <constraint firstItem="aWE-Sk-XPV" firstAttribute="trailing" secondItem="lVU-As-cJx" secondAttribute="trailing" id="nmh-7g-96b"/>
+                <constraint firstItem="ZTg-uK-7eu" firstAttribute="top" secondItem="Hx8-Mw-grr" secondAttribute="top" id="rre-xw-cji"/>
+                <constraint firstItem="lVU-As-cJx" firstAttribute="bottom" secondItem="Hx8-Mw-grr" secondAttribute="bottom" id="z31-4C-Uj8"/>
+            </constraints>
+            <size key="customSize" width="217" height="234"/>
+            <connections>
+                <outlet property="apodDateLabel" destination="p40-8H-NZN" id="ZnY-6j-lJk"/>
+                <outlet property="apodImageView" destination="Hx8-Mw-grr" id="Yes-bX-0uY"/>
+                <outlet property="apodTitleLabel" destination="lZZ-dn-Qbv" id="MxU-jX-faU"/>
+                <outlet property="gradientView" destination="aWE-Sk-XPV" id="Rko-C0-YZK"/>
+            </connections>
+            <point key="canvasLocation" x="325.36231884057975" y="99.776785714285708"/>
+        </collectionViewCell>
+    </objects>
+</document>
