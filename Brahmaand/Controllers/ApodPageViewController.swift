@@ -56,6 +56,18 @@ class ApodPageViewController: UIPageViewController {
         }
     }
 
+    private var isCurrentShownApodFavorited: Bool? {
+        didSet {
+            guard let value = isCurrentShownApodFavorited else {
+                navigationItem.rightBarButtonItem = nil
+                return
+            }
+            favoriteButton.image = value ? UIImage(systemName: "heart.fill") : UIImage(systemName: "heart")
+        }
+    }
+
+    private let apodFavoritesManager = ApodFactory.makeApodFavoritesManager()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         dataSource = self
@@ -90,7 +102,18 @@ class ApodPageViewController: UIPageViewController {
     }
 
     @objc func didClickFavoriteButton(_ sender: Any) {
-        print("favorited")
+        guard let favorited = isCurrentShownApodFavorited else { return }
+        var success = false
+        if favorited {
+            success = apodFavoritesManager.removeFromFavorites(date: currentShownApodDate)
+        } else {
+            success = apodFavoritesManager.addToFavorites(date: currentShownApodDate)
+        }
+        if success {
+            isCurrentShownApodFavorited?.toggle()
+        } else {
+            print("Failed to (un)favorite apod for date \(currentShownApodDate.displayFormatted())")
+        }
     }
 }
 
@@ -138,5 +161,14 @@ extension ApodPageViewController: UIPageViewControllerDelegate {
             return
         }
         currentShownApodDate = date
+        apodFavoritesManager.isFavorited(date: date) { [weak self] (result) in
+            switch result {
+            case .success(let favorited):
+                self?.isCurrentShownApodFavorited = favorited
+            case .failure(let error):
+                print(error.localizedDescription)
+                self?.isCurrentShownApodFavorited = nil
+            }
+        }
     }
 }

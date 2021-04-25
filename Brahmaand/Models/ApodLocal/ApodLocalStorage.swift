@@ -23,6 +23,7 @@ fileprivate struct DbInfo {
 
     struct TableFavApods {
         static let name = "fav_apods"
+        static let col_apod_date = "apod_date"
     }
 }
 
@@ -91,6 +92,52 @@ VALUES (?, ?, ?, ?, ?, ?, ?)
         }
     }
 
+    func addApodToFavorites(_ date: Date) throws {
+        let insertQuery = """
+INSERT OR IGNORE INTO \(DbInfo.TableFavApods.name)
+(\(DbInfo.TableApods.col_date))
+VALUES (?)
+"""
+        let params: [Any?] = [date.apodApiFormatted()]
+        try db.insert(insertString: insertQuery, parameters: params)
+    }
+
+    func removeApodFromFavorites(_ date: Date) throws {
+        let deleteQuery = """
+DELETE FROM \(DbInfo.TableFavApods.name) WHERE \(DbInfo.TableFavApods.col_apod_date) = ?
+"""
+        let params: [Any?] = [date.apodApiFormatted()]
+        try db.insert(insertString: deleteQuery, parameters: params)
+    }
+
+    func fetchFavoriteApods(completion: @escaping (Result<[Apod], Error>) -> ()) {
+        let fetchQuery = "SELECT * FROM \(DbInfo.TableApods.name) INNER JOIN \(DbInfo.TableFavApods.name) ON \(DbInfo.TableApods.col_date) = \(DbInfo.TableFavApods.col_apod_date)"
+        do {
+            let results = try db.fetch(fetchString: fetchQuery, parameters: [])
+            let apods = results.compactMap(apod(from:))
+            completion(.success(apods))
+        } catch {
+            completion(.failure(error))
+        }
+    }
+
+    func isApodFavorited(_ date: Date, completion:  @escaping (Result<Bool, Error>) -> ()) {
+        let fetchQuery = "EXISTS (SELECT 1 FROM \(DbInfo.TableFavApods.name) WHERE \(DbInfo.TableFavApods.col_apod_date) = ? LIMIT 1)"
+        let params = [date.apodApiFormatted()]
+        do {
+            let results = try db.fetch(fetchString: fetchQuery, parameters: params)
+            guard let existsRow = results.first else {
+                throw "EXISTS returned no row. That's impossible!"
+            }
+            guard let exists = existsRow[fetchQuery] as? Int else {
+                throw "EXISTS did not return 1/0. That's impossible!"
+            }
+            completion(.success(exists == 0 ? false : true))
+        } catch {
+            completion(.failure(error))
+        }
+    }
+
     private func apod(from row: [String: Any]) -> Apod? {
         guard let dateStr = row[DbInfo.TableApods.col_date] as? String,
               let date = Constants.DateFormatters.apodApiFormatter.date(from: dateStr),
@@ -109,6 +156,8 @@ VALUES (?, ?, ?, ?, ?, ?, ?)
     }
 
     static func createQueries() -> [String] {
+        let foreignKeysQuery = "PRAGMA foreign_keys = ON"
+
         let createTableApodsQuery = """
 CREATE TABLE \(DbInfo.TableApods.name) (
 \(DbInfo.TableApods.col_date) TEXT PRIMARY KEY,
@@ -119,7 +168,13 @@ CREATE TABLE \(DbInfo.TableApods.name) (
 \(DbInfo.TableApods.col_copyright) TEXT,
 \(DbInfo.TableApods.col_hdurl) TEXT)
 """
-        return [createTableApodsQuery]
+
+        let createTableFavApodsQuery = """
+CREATE TABLE \(DbInfo.TableFavApods.name) (
+\(DbInfo.TableFavApods.col_apod_date) TEXT PRIMARY KEY,
+FOREIGN KEY(\(DbInfo.TableFavApods.col_apod_date)) REFERENCES \(DbInfo.TableApods.name)(\(DbInfo.TableApods.col_date)))
+"""
+        return [foreignKeysQuery, createTableApodsQuery, createTableFavApodsQuery]
     }
 
     func removeData() {
