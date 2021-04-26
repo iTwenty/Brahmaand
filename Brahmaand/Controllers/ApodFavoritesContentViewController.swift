@@ -29,6 +29,7 @@ class ApodFavoritesContentViewController: UIViewController {
         let apodCellNib = UINib(nibName: "ApodCell", bundle: nil)
         apodFavoritesCollectionView.register(apodCellNib, forCellWithReuseIdentifier: ApodCell.reuseIdentifier)
         apodFavoritesCollectionView.dataSource = self
+        apodFavoritesCollectionView.delegate = self
     }
 }
 
@@ -48,5 +49,19 @@ extension ApodFavoritesContentViewController: UICollectionViewDataSource {
             cell.apodImageUrl = apod.url
         }
         return cell
+    }
+}
+
+
+extension ApodFavoritesContentViewController: UICollectionViewDelegateFlowLayout {
+
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let numberOfItemsPerRow: CGFloat = 1
+        let spacing: CGFloat = 8
+        let totalSpacing = (2 * spacing) + ((numberOfItemsPerRow - 1) * spacing)
+        let width = (collectionView.bounds.width - totalSpacing) / numberOfItemsPerRow
+        return CGSize(width: width, height: width)
     }
 }

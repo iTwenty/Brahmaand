@@ -23,7 +23,7 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Hx8-Mw-grr">
-                        <rect key="frame" x="0.0" y="44" width="217" height="190"/>
+                        <rect key="frame" x="0.0" y="0.0" width="217" height="234"/>
                     </imageView>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="lVU-As-cJx">
                         <rect key="frame" x="0.0" y="169" width="217" height="65"/>
@@ -48,15 +48,15 @@
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <constraints>
                 <constraint firstItem="lVU-As-cJx" firstAttribute="trailing" secondItem="Hx8-Mw-grr" secondAttribute="trailing" id="46b-VA-d9J"/>
-                <constraint firstItem="ZTg-uK-7eu" firstAttribute="bottom" secondItem="Hx8-Mw-grr" secondAttribute="bottom" id="LDy-dM-Yac"/>
+                <constraint firstAttribute="bottom" secondItem="Hx8-Mw-grr" secondAttribute="bottom" id="LDy-dM-Yac"/>
                 <constraint firstItem="aWE-Sk-XPV" firstAttribute="top" secondItem="lVU-As-cJx" secondAttribute="top" id="Lij-Jv-4rM"/>
                 <constraint firstItem="aWE-Sk-XPV" firstAttribute="bottom" secondItem="lVU-As-cJx" secondAttribute="bottom" id="Mn4-72-Rvp"/>
-                <constraint firstItem="Hx8-Mw-grr" firstAttribute="trailing" secondItem="ZTg-uK-7eu" secondAttribute="trailing" id="RkB-Lk-WwO"/>
+                <constraint firstItem="Hx8-Mw-grr" firstAttribute="trailing" secondItem="gTV-IL-0wX" secondAttribute="trailing" id="RkB-Lk-WwO"/>
                 <constraint firstItem="lVU-As-cJx" firstAttribute="leading" secondItem="Hx8-Mw-grr" secondAttribute="leading" id="WG7-Uw-lVL"/>
                 <constraint firstItem="aWE-Sk-XPV" firstAttribute="leading" secondItem="lVU-As-cJx" secondAttribute="leading" id="YSL-7E-v4G"/>
-                <constraint firstItem="ZTg-uK-7eu" firstAttribute="leading" secondItem="Hx8-Mw-grr" secondAttribute="leading" id="cDn-h4-Fp7"/>
+                <constraint firstAttribute="leading" secondItem="Hx8-Mw-grr" secondAttribute="leading" id="cDn-h4-Fp7"/>
                 <constraint firstItem="aWE-Sk-XPV" firstAttribute="trailing" secondItem="lVU-As-cJx" secondAttribute="trailing" id="nmh-7g-96b"/>
-                <constraint firstItem="ZTg-uK-7eu" firstAttribute="top" secondItem="Hx8-Mw-grr" secondAttribute="top" id="rre-xw-cji"/>
+                <constraint firstAttribute="top" secondItem="Hx8-Mw-grr" secondAttribute="top" id="rre-xw-cji"/>
                 <constraint firstItem="lVU-As-cJx" firstAttribute="bottom" secondItem="Hx8-Mw-grr" secondAttribute="bottom" id="z31-4C-Uj8"/>
             </constraints>
             <size key="customSize" width="217" height="234"/>

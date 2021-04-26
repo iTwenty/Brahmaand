@@ -45,8 +45,7 @@ class ApodPageViewController: UIPageViewController {
     }()
 
     private lazy var favoriteButton: UIBarButtonItem = {
-        let heartIcon = UIImage(systemName: "heart")
-        let button = UIBarButtonItem(image: heartIcon, style: .plain, target: self, action: #selector(didClickFavoriteButton(_:)))
+        let button = UIBarButtonItem(image: nil, style: .plain, target: self, action: #selector(didClickFavoriteButton(_:)))
         return button
     }()
 
@@ -62,6 +61,7 @@ class ApodPageViewController: UIPageViewController {
                 navigationItem.rightBarButtonItem = nil
                 return
             }
+            navigationItem.rightBarButtonItem = favoriteButton
             favoriteButton.image = value ? UIImage(systemName: "heart.fill") : UIImage(systemName: "heart")
         }
     }
