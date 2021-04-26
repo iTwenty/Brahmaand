@@ -10,9 +10,10 @@ import UIKit
 class ApodFavoritesContentViewController: UIViewController {
 
     @IBOutlet weak var apodFavoritesCollectionView: UICollectionView!
+
     var favoriteApods: [Apod] = [] {
         didSet {
-            apodFavoritesCollectionView.reloadData()
+            apodFavoritesCollectionView?.reloadData()
         }
     }
 

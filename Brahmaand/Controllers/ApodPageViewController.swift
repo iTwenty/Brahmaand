@@ -77,6 +77,7 @@ class ApodPageViewController: UIPageViewController {
         navigationItem.titleView = apodDateTitleButton
         navigationItem.rightBarButtonItem = favoriteButton
         apodDateTitleButton.setTitle(currentShownApodDate.displayFormatted(), for: .normal)
+        updateFavorite()
     }
 
     @IBAction func didClickApodDateTitleButton(_ sender: Any) {
@@ -98,6 +99,7 @@ class ApodPageViewController: UIPageViewController {
             let apodVc = ApodContainerViewController(fetchType: .middle(date: selectedDate))
             setViewControllers([apodVc], direction: direction, animated: true, completion: nil)
             currentShownApodDate = selectedDate
+            updateFavorite()
         }
     }
 
@@ -151,6 +153,18 @@ extension ApodPageViewController: UIPageViewControllerDataSource {
         let apodVc = ApodContainerViewController(fetchType: .after(date: afterDate))
         return apodVc
     }
+
+    private func updateFavorite() {
+        apodFavoritesManager.isFavorited(date: currentShownApodDate) { [weak self] (result) in
+            switch result {
+            case .success(let favorited):
+                self?.isCurrentShownApodFavorited = favorited
+            case .failure(let error):
+                print(error.localizedDescription)
+                self?.isCurrentShownApodFavorited = nil
+            }
+        }
+    }
 }
 
 extension ApodPageViewController: UIPageViewControllerDelegate {
@@ -161,14 +175,6 @@ extension ApodPageViewController: UIPageViewControllerDelegate {
             return
         }
         currentShownApodDate = date
-        apodFavoritesManager.isFavorited(date: date) { [weak self] (result) in
-            switch result {
-            case .success(let favorited):
-                self?.isCurrentShownApodFavorited = favorited
-            case .failure(let error):
-                print(error.localizedDescription)
-                self?.isCurrentShownApodFavorited = nil
-            }
-        }
+        updateFavorite()
     }
 }

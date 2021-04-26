@@ -95,7 +95,7 @@ VALUES (?, ?, ?, ?, ?, ?, ?)
     func addApodToFavorites(_ date: Date) throws {
         let insertQuery = """
 INSERT OR IGNORE INTO \(DbInfo.TableFavApods.name)
-(\(DbInfo.TableApods.col_date))
+(\(DbInfo.TableFavApods.col_apod_date))
 VALUES (?)
 """
         let params: [Any?] = [date.apodApiFormatted()]
@@ -122,14 +122,15 @@ DELETE FROM \(DbInfo.TableFavApods.name) WHERE \(DbInfo.TableFavApods.col_apod_d
     }
 
     func isApodFavorited(_ date: Date, completion:  @escaping (Result<Bool, Error>) -> ()) {
-        let fetchQuery = "EXISTS (SELECT 1 FROM \(DbInfo.TableFavApods.name) WHERE \(DbInfo.TableFavApods.col_apod_date) = ? LIMIT 1)"
+        let fetchKey = "EXISTS (SELECT 1 FROM \(DbInfo.TableFavApods.name) WHERE \(DbInfo.TableFavApods.col_apod_date) = ? LIMIT 1)"
+        let fetchQuery = "SELECT \(fetchKey)"
         let params = [date.apodApiFormatted()]
         do {
             let results = try db.fetch(fetchString: fetchQuery, parameters: params)
             guard let existsRow = results.first else {
                 throw "EXISTS returned no row. That's impossible!"
             }
-            guard let exists = existsRow[fetchQuery] as? Int else {
+            guard let exists = existsRow[fetchKey] as? Int else {
                 throw "EXISTS did not return 1/0. That's impossible!"
             }
             completion(.success(exists == 0 ? false : true))
