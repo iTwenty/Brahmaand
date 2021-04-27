@@ -18,13 +18,6 @@ class ApodCell: UICollectionViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-//        let gradient = CAGradientLayer()
-//        gradient.frame = gradientView.bounds
-//        gradient.colors = [UIColor.red, UIColor.green]
-//        gradient.startPoint = .zero
-//        gradient.endPoint = CGPoint(x: 1, y: 1)
-//        gradientView.layer.addSublayer(gradient)
-        gradientView.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
     }
 
     var apodTitle: String? {

@@ -41,6 +41,7 @@
 		63D84A4C2609FF2A00796D25 /* ApodApiFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D84A4B2609FF2A00796D25 /* ApodApiFetcher.swift */; };
 		63D84A54260A029300796D25 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D84A53260A029300796D25 /* Extensions.swift */; };
 		63D84A5E260A08E200796D25 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D84A5D260A08E200796D25 /* Constants.swift */; };
+		63E50E762638287600DFA0BE /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E50E752638287600DFA0BE /* GradientView.swift */; };
 		C0A480CA260F8D0200FE2756 /* ApodPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A480C9260F8D0200FE2756 /* ApodPageViewController.swift */; };
 		C0A480CE2610900500FE2756 /* UIImageColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A480CD2610900500FE2756 /* UIImageColors.swift */; };
 /* End PBXBuildFile section */
@@ -92,6 +93,7 @@
 		63D84A4B2609FF2A00796D25 /* ApodApiFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApodApiFetcher.swift; sourceTree = "<group>"; };
 		63D84A53260A029300796D25 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		63D84A5D260A08E200796D25 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		63E50E752638287600DFA0BE /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		C0A480C9260F8D0200FE2756 /* ApodPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApodPageViewController.swift; sourceTree = "<group>"; };
 		C0A480CD2610900500FE2756 /* UIImageColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageColors.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -140,6 +142,7 @@
 				6325E003261F252600A9F226 /* InputButton.swift */,
 				6369C70A263533DE005F0F02 /* ApodCell.swift */,
 				6369C70B263533DE005F0F02 /* ApodCell.xib */,
+				63E50E752638287600DFA0BE /* GradientView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -366,6 +369,7 @@
 				63D84A54260A029300796D25 /* Extensions.swift in Sources */,
 				63D84A092609F69500796D25 /* ApodContentViewController.swift in Sources */,
 				63D84A482609FCDD00796D25 /* Apod.swift in Sources */,
+				63E50E762638287600DFA0BE /* GradientView.swift in Sources */,
 				63D84A5E260A08E200796D25 /* Constants.swift in Sources */,
 				6325E0292621B77E00A9F226 /* ApodMediaViewController.swift in Sources */,
 				6301AE192633F7A500A23FFD /* ApodFavoritesContentViewController.swift in Sources */,
