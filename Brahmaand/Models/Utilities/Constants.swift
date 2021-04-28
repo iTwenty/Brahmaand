@@ -14,6 +14,7 @@ struct Constants {
         static let apodApiFormatter: DateFormatter = {
             let formatter = DateFormatter()
             formatter.calendar = Calendars.apodCalendar
+            formatter.timeZone = formatter.calendar.timeZone
             formatter.dateFormat = "yyyy-MM-dd"
             return formatter
         }()
@@ -21,6 +22,7 @@ struct Constants {
         static let displayFormatter: DateFormatter = {
             let formatter = DateFormatter()
             formatter.calendar = Calendars.apodCalendar
+            formatter.timeZone = formatter.calendar.timeZone
             formatter.dateFormat = "dd MMM yyyy"
             return formatter
         }()
@@ -30,7 +32,7 @@ struct Constants {
 
         static let apodCalendar: Calendar = {
             var calendar = Calendar(identifier: .gregorian)
-            calendar.timeZone = TimeZone(abbreviation: "PST")!
+            calendar.timeZone = TimeZone(abbreviation: "EDT")!
             return calendar
         }()
     }

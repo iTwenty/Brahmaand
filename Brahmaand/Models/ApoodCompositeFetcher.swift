@@ -65,7 +65,7 @@ final class ApodCompositeFetcher {
 
     static func fetchApod(fetchType: FetchType, options: FetchOptions?, completion: @escaping (Result<Apod, Error>) -> ()) {
         let date = fetchType.date
-        print("Fetching apod for \(date)...")
+        print("Fetching apod for \(date.displayFormatted())...")
         apodLocalStorage.fetchApod(forDate: date) { (localResult) in
             switch localResult {
             case .success:
