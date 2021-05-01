@@ -121,6 +121,7 @@
 		631B2C6D260B50640059D8E8 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				6369C71326356157005F0F02 /* ApodFavoritesManager.swift */,
 				C0A480C9260F8D0200FE2756 /* ApodPageViewController.swift */,
 				6325E0172620613800A9F226 /* ApodContainerViewController.swift */,
 				63D84A082609F69500796D25 /* ApodContentViewController.swift */,
@@ -201,6 +202,7 @@
 		63D84A032609F69500796D25 /* Brahmaand */ = {
 			isa = PBXGroup;
 			children = (
+				63D84A52260A027A00796D25 /* Utilities */,
 				63D84A422609FBF300796D25 /* Models */,
 				631B2C6E260B509B0059D8E8 /* Views */,
 				631B2C6D260B50640059D8E8 /* Controllers */,
@@ -231,11 +233,9 @@
 				6369C7172635640A005F0F02 /* Factory */,
 				632C3B2B2611D5D0007B39C6 /* ApodLocal */,
 				6365FBAF260B3BCE003C9ED5 /* ApodApi */,
-				63D84A52260A027A00796D25 /* Utilities */,
 				63D84A472609FCDD00796D25 /* Apod.swift */,
 				63D84A432609FCB500796D25 /* ApodFetcher.swift */,
 				63C2DE5626184E9C00EADB7B /* ApoodCompositeFetcher.swift */,
-				6369C71326356157005F0F02 /* ApodFavoritesManager.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
