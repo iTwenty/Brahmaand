@@ -13,8 +13,10 @@ class ApodNavigator {
     private init() {}
     static let shared = ApodNavigator()
 
-    func showFullScreenImage(apod: Apod, presenter: UIViewController) {
+    func pushApodMediaViewController(apod: Apod, presenter: UIViewController) {
         let mediaVc = ApodMediaViewController.fromStoryboard(apod: apod)
-        presenter.present(mediaVc, animated: true, completion: nil)
+        mediaVc.title = apod.title
+        mediaVc.hidesBottomBarWhenPushed = true
+        presenter.navigationController?.pushViewController(mediaVc, animated: true)
     }
 }

@@ -71,7 +71,7 @@ class ApodContentViewController: UIViewController {
 
     private func showFullScreenImage() {
         guard let apod = apod else { return }
-        ApodNavigator.shared.showFullScreenImage(apod: apod, presenter: self)
+        ApodNavigator.shared.pushApodMediaViewController(apod: apod, presenter: self)
     }
 
     private func setBackgroundColor(fromImage image: UIImage) {
