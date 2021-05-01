@@ -9,6 +9,7 @@ import UIKit
 
 @objc public protocol ImageScrollViewDelegate: UIScrollViewDelegate {
     func imageScrollViewDidChangeOrientation(imageScrollView: ImageScrollView)
+    func imageScrollViewSingleTapped()
 }
 
 open class ImageScrollView: UIScrollView {
@@ -77,7 +78,7 @@ open class ImageScrollView: UIScrollView {
         showsVerticalScrollIndicator = false
         showsHorizontalScrollIndicator = false
         bouncesZoom = true
-        decelerationRate = UIScrollView.DecelerationRate.fast
+        decelerationRate = .fast
         delegate = self
 
         NotificationCenter.default.addObserver(self,
@@ -191,9 +192,15 @@ open class ImageScrollView: UIScrollView {
         zoomView!.isUserInteractionEnabled = true
         addSubview(zoomView!)
 
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(ImageScrollView.doubleTapGestureRecognizer(_:)))
-        tapGesture.numberOfTapsRequired = 2
-        zoomView!.addGestureRecognizer(tapGesture)
+        let singleTapGesture = UITapGestureRecognizer(target: self, action: #selector(singleTapGestureRecognizer(_:)))
+        singleTapGesture.numberOfTapsRequired = 1
+        addGestureRecognizer(singleTapGesture)
+
+        let doubleTapGesture = UITapGestureRecognizer(target: self, action: #selector(doubleTapGestureRecognizer(_:)))
+        doubleTapGesture.numberOfTapsRequired = 2
+        zoomView!.addGestureRecognizer(doubleTapGesture)
+
+        singleTapGesture.require(toFail: doubleTapGesture)
 
         configureImageForSize(image.size)
     }
@@ -256,6 +263,10 @@ open class ImageScrollView: UIScrollView {
     }
 
     // MARK: - Gesture
+
+    @objc func singleTapGestureRecognizer(_ gestureRecognizer: UIGestureRecognizer) {
+        imageScrollViewDelegate?.imageScrollViewSingleTapped()
+    }
 
     @objc func doubleTapGestureRecognizer(_ gestureRecognizer: UIGestureRecognizer) {
         // zoom out if it bigger than middle scale point. Else, zoom in

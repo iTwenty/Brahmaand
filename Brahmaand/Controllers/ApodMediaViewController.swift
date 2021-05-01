@@ -28,6 +28,11 @@ class ApodMediaViewController: UIViewController {
     }()
 
     private var hdImageDownloadTask: DownloadTask?
+    private var navBarHidden = true {
+        didSet {
+            navigationController?.setNavigationBarHidden(navBarHidden, animated: true)
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,6 +43,8 @@ class ApodMediaViewController: UIViewController {
             finalUrl = hdurl
         }
         configureDownloadHdButton()
+        scrollView.imageScrollViewDelegate = self
+        navBarHidden = true
         KingfisherManager.shared.retrieveImage(with: finalUrl) { [weak self] (result) in
             switch result {
             case .success(let imageResult):
@@ -88,5 +95,16 @@ class ApodMediaViewController: UIViewController {
 
     deinit {
         hdImageDownloadTask?.cancel()
+    }
+}
+
+extension ApodMediaViewController: ImageScrollViewDelegate {
+
+    func imageScrollViewDidChangeOrientation(imageScrollView: ImageScrollView) {
+        // WOOT!
+    }
+
+    func imageScrollViewSingleTapped() {
+        navBarHidden.toggle()
     }
 }
