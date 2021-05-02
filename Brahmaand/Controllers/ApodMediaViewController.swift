@@ -21,10 +21,14 @@ class ApodMediaViewController: UIViewController {
         return vc
     }
 
-    lazy var downloadHdButton: UIBarButtonItem = {
-        let downloadHdImage = UIImage(systemName: "arrow.down.to.line")
-        let button = UIBarButtonItem(image: downloadHdImage, style: .plain, target: self, action: #selector(didClickDownloadHdButton(_:)))
+    lazy var progressButton: CircularProgressButton = {
+        let button = CircularProgressButton(frame: .zero)
+        button.addTarget(self, action: #selector(didClickDownloadHdButton(_:)), for: .touchUpInside)
         return button
+    }()
+
+    lazy var downloadHdButton: UIBarButtonItem = {
+        UIBarButtonItem(customView: progressButton)
     }()
 
     private var hdImageDownloadTask: DownloadTask?
@@ -61,11 +65,12 @@ class ApodMediaViewController: UIViewController {
             downloadHdButton.isEnabled = false
             return
         }
-        guard !hdImageCached(hdurl: hdurl) else {
+        if hdImageCached(hdurl: hdurl) {
             downloadHdButton.isEnabled = false
-            return
+            progressButton.state = .completed
+        } else {
+            downloadHdButton.isEnabled = true
         }
-        downloadHdButton.isEnabled = true
     }
 
     private func showImage(_ image: UIImage) {
@@ -77,18 +82,20 @@ class ApodMediaViewController: UIViewController {
     }
 
     @objc func didClickDownloadHdButton(_ sender: Any) {
-        downloadHdButton.isEnabled = false
         guard let hdurl = apod?.hdurl else { return }
-        hdImageDownloadTask = KingfisherManager.shared.retrieveImage(with: hdurl) { (currentBytes, totalBytes) in
-            print("Downloaded \(currentBytes) / \(totalBytes)")
+        progressButton.state = .progressing(0)
+        hdImageDownloadTask = KingfisherManager.shared.retrieveImage(with: hdurl) { [weak self] (currentBytes, totalBytes) in
+            let progress = Float(currentBytes) / Float(totalBytes)
+            self?.progressButton.state = .progressing(progress)
         } completionHandler: { [weak self] (result) in
             switch result {
             case .success(let imageResult):
                 print("HD downloaded!")
+                self?.progressButton.state = .completed
                 self?.showImage(imageResult.image)
             case .failure(let error):
                 print("HD download failed : \(error.localizedDescription)")
-                self?.downloadHdButton.isEnabled = true
+                self?.progressButton.state = .initial
             }
         }
     }
