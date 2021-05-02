@@ -45,6 +45,7 @@
 		63E50E762638287600DFA0BE /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E50E752638287600DFA0BE /* GradientView.swift */; };
 		C0A480CA260F8D0200FE2756 /* ApodPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A480C9260F8D0200FE2756 /* ApodPageViewController.swift */; };
 		C0A480CE2610900500FE2756 /* UIImageColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A480CD2610900500FE2756 /* UIImageColors.swift */; };
+		C0F8C179263D92DD00E327E0 /* CircularProgressButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F8C178263D92DD00E327E0 /* CircularProgressButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -98,6 +99,7 @@
 		63E50E752638287600DFA0BE /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		C0A480C9260F8D0200FE2756 /* ApodPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApodPageViewController.swift; sourceTree = "<group>"; };
 		C0A480CD2610900500FE2756 /* UIImageColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageColors.swift; sourceTree = "<group>"; };
+		C0F8C178263D92DD00E327E0 /* CircularProgressButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +149,7 @@
 				6369C70B263533DE005F0F02 /* ApodCell.xib */,
 				63E50E752638287600DFA0BE /* GradientView.swift */,
 				639AED4B263D289400A6EC47 /* ImageScrollView.swift */,
+				C0F8C178263D92DD00E327E0 /* CircularProgressButton.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -392,6 +395,7 @@
 				6369C70C263533DE005F0F02 /* ApodCell.swift in Sources */,
 				632C3B2D2611D5F3007B39C6 /* ApodLocalStorage.swift in Sources */,
 				6325E01226205E3A00A9F226 /* ApodFailureViewController.swift in Sources */,
+				C0F8C179263D92DD00E327E0 /* CircularProgressButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
