@@ -26,10 +26,17 @@ class CircularProgressButton: UIView {
     private let outerArc = CAShapeLayer()
     private let innerArc = CAShapeLayer()
 
+    override var tintColor: UIColor! {
+        didSet {
+            setNeedsLayout()
+        }
+    }
+
     private lazy var button: UIButton = {
         let button = UIButton(type: .custom)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.pin(to: self)
+        button.backgroundColor = .clear
         return button
     }()
 
@@ -44,9 +51,15 @@ class CircularProgressButton: UIView {
     }
 
     private func commonInit() {
-        outerArc.frame = frame
+        state = .initial
+    }
+
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        outerArc.frame = bounds
         outerArc.fillColor = nil
         outerArc.lineWidth = 1
+        outerArc.strokeColor = tintColor.cgColor
         let startAngle: CGFloat = 0
         let endAngle: CGFloat = 2.0 * CGFloat.pi
         let clockwise = true
@@ -57,16 +70,15 @@ class CircularProgressButton: UIView {
                                         clockwise: clockwise)
         outerArc.path = outerArcPath.cgPath
 
-        innerArc.frame = frame
+        innerArc.frame = bounds
         innerArc.fillColor = nil
         innerArc.lineWidth = 3
+        innerArc.strokeColor = tintColor.cgColor
         let innerArcRadius = outerArcRadius - (outerArc.lineWidth * 2)
         let innerArcPath = UIBezierPath(arcCenter: center, radius: innerArcRadius,
                                         startAngle: startAngle, endAngle: endAngle,
                                         clockwise: clockwise)
         innerArc.path = innerArcPath.cgPath
-
-        state = .initial
     }
 
     func addTarget(_ target: Any?, action: Selector, for controlEvents: UIControl.Event) {
@@ -100,4 +112,6 @@ class CircularProgressButton: UIView {
             innerArc.removeFromSuperlayer()
         }
     }
+
+    override var intrinsicContentSize: CGSize { CGSize(width: 32, height: 32) }
 }
