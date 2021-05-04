@@ -40,15 +40,18 @@ class ApodMediaViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
         scrollView.setup()
+        scrollView.imageScrollViewDelegate = self
+
         guard let imgUrl = apod?.url else { return }
         var finalUrl = imgUrl
+        var hdImageInCache = false
         if let hdurl = apod?.hdurl, hdImageCached(hdurl: hdurl) {
             finalUrl = hdurl
+            hdImageInCache = true
         }
-        configureDownloadHdButton()
-        scrollView.imageScrollViewDelegate = self
-        navBarHidden = true
+        configureNavigationBar(hdImageInCache: hdImageInCache)
         KingfisherManager.shared.retrieveImage(with: finalUrl) { [weak self] (result) in
             switch result {
             case .success(let imageResult):
@@ -59,18 +62,16 @@ class ApodMediaViewController: UIViewController {
         }
     }
 
-    private func configureDownloadHdButton() {
+    private func configureNavigationBar(hdImageInCache: Bool) {
+        navBarHidden = true
         navigationItem.rightBarButtonItem = downloadHdButton
         progressButton.tintColor = downloadHdButton.tintColor
-        guard let hdurl = apod?.hdurl else {
-            downloadHdButton.isEnabled = false
-            return
-        }
-        if hdImageCached(hdurl: hdurl) {
+        if hdImageInCache {
             downloadHdButton.isEnabled = false
             progressButton.state = .completed
         } else {
             downloadHdButton.isEnabled = true
+            progressButton.state = .initial
         }
     }
 
@@ -105,6 +106,7 @@ class ApodMediaViewController: UIViewController {
                 case .failure(let error):
                     print("HD download failed : \(error.localizedDescription)")
                     self?.progressButton.state = .initial
+                    self?.downloadHdButton.isEnabled = true
                 }
             }
         }
