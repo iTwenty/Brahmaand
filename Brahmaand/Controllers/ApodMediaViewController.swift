@@ -31,6 +31,10 @@ class ApodMediaViewController: UIViewController {
         UIBarButtonItem(customView: progressButton)
     }()
 
+    lazy var shareButton: UIBarButtonItem = {
+        UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(didClickShareButton(_:)))
+    }()
+
     private var hdImageDownloadTask: DownloadTask?
     private var navBarHidden = true {
         didSet {
@@ -64,7 +68,7 @@ class ApodMediaViewController: UIViewController {
 
     private func configureNavigationBar(hdImageInCache: Bool) {
         navBarHidden = true
-        navigationItem.rightBarButtonItem = downloadHdButton
+        navigationItem.rightBarButtonItems = [shareButton, downloadHdButton]
         progressButton.tintColor = downloadHdButton.tintColor
         if hdImageInCache {
             downloadHdButton.isEnabled = false
@@ -110,6 +114,12 @@ class ApodMediaViewController: UIViewController {
                 }
             }
         }
+    }
+
+    @objc func didClickShareButton(_ sender: Any) {
+        guard let shareImage = scrollView.zoomView?.image else { return }
+        let shareVc = UIActivityViewController(activityItems: [shareImage], applicationActivities: nil)
+        self.present(shareVc, animated: true, completion: nil)
     }
 
     deinit {
