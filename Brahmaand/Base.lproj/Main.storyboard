@@ -131,6 +131,7 @@
                     <connections>
                         <segue destination="2JO-5q-G5u" kind="relationship" relationship="viewControllers" id="Qdn-QN-c25"/>
                         <segue destination="wsd-jo-iXn" kind="relationship" relationship="viewControllers" id="M1M-ai-iqs"/>
+                        <segue destination="Wgc-b3-HGl" kind="relationship" relationship="viewControllers" id="ssM-pb-KmO"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IiY-nZ-5KV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -140,7 +141,7 @@
         <!--Favorites-->
         <scene sceneID="6MT-zr-Mfd">
             <objects>
-                <viewController storyboardIdentifier="ApodFavoritesContainerViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="wsd-jo-iXn" customClass="ApodFavoritesContainerViewController" customModule="Brahmaand" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ApodFavoritesContainerViewController" title="Favorites" useStoryboardIdentifierAsRestorationIdentifier="YES" id="wsd-jo-iXn" customClass="ApodFavoritesContainerViewController" customModule="Brahmaand" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="YAz-Pv-Ojr">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -192,6 +193,78 @@
             </objects>
             <point key="canvasLocation" x="194" y="1712"/>
         </scene>
+        <!--Settings-->
+        <scene sceneID="mpG-cp-iDV">
+            <objects>
+                <viewController storyboardIdentifier="SettingsViewController" title="Settings" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Wgc-b3-HGl" customClass="SettingsViewController" customModule="Brahmaand" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="hQg-Ki-pdz">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Lrc-Kz-BK6">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SettingsCell" id="cwc-Bu-xMA" customClass="SettingsCell" customModule="Brahmaand" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="64.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="cwc-Bu-xMA" id="Tkx-9c-isv">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="64.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Plw-0t-1TC">
+                                                    <rect key="frame" x="20" y="20" width="374" height="24.5"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZcJ-mw-MGr" userLabel="Title">
+                                                            <rect key="frame" x="0.0" y="0.0" width="333" height="24.5"/>
+                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BcC-rf-bee" userLabel="Subtitle">
+                                                            <rect key="frame" x="341" y="0.0" width="33" height="24.5"/>
+                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
+                                                            <color key="textColor" systemColor="systemGrayColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="Plw-0t-1TC" secondAttribute="bottom" constant="20" symbolic="YES" id="7IX-rC-lsT"/>
+                                                <constraint firstItem="Plw-0t-1TC" firstAttribute="top" secondItem="Tkx-9c-isv" secondAttribute="top" constant="20" symbolic="YES" id="KjD-rq-P3J"/>
+                                                <constraint firstAttribute="trailing" secondItem="Plw-0t-1TC" secondAttribute="trailing" constant="20" symbolic="YES" id="RKz-Qs-cyg"/>
+                                                <constraint firstItem="Plw-0t-1TC" firstAttribute="leading" secondItem="Tkx-9c-isv" secondAttribute="leading" constant="20" symbolic="YES" id="vuV-rS-QXJ"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="subtitleLabel" destination="BcC-rf-bee" id="lCl-eP-XjB"/>
+                                            <outlet property="titleLabel" destination="ZcJ-mw-MGr" id="xBG-64-38E"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="yqV-xJ-MZk"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Lrc-Kz-BK6" firstAttribute="top" secondItem="hQg-Ki-pdz" secondAttribute="top" id="0Je-vS-w17"/>
+                            <constraint firstAttribute="bottom" secondItem="Lrc-Kz-BK6" secondAttribute="bottom" id="OdY-2c-ugG"/>
+                            <constraint firstItem="Lrc-Kz-BK6" firstAttribute="leading" secondItem="hQg-Ki-pdz" secondAttribute="leading" id="ZjE-ez-1FS"/>
+                            <constraint firstAttribute="trailing" secondItem="Lrc-Kz-BK6" secondAttribute="trailing" id="bEW-lT-mtw"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Settings" springLoaded="YES" id="tkl-D7-MQJ">
+                        <imageReference key="image" image="gearshape.fill" catalog="system" symbolScale="default"/>
+                    </tabBarItem>
+                    <connections>
+                        <outlet property="settingsTableView" destination="Lrc-Kz-BK6" id="wIC-h9-7nx"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ue8-Ru-Izv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1217" y="3151"/>
+        </scene>
         <!--Apod Favorites Empty View Controller-->
         <scene sceneID="OiX-md-fUT">
             <objects>
@@ -233,7 +306,7 @@
         <!--Daily-->
         <scene sceneID="68Q-XT-wY7">
             <objects>
-                <navigationController id="2JO-5q-G5u" sceneMemberID="viewController">
+                <navigationController title="Daily" id="2JO-5q-G5u" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Daily" id="36D-qY-oWf">
                         <imageReference key="image" image="globe" catalog="system" symbolScale="default"/>
                     </tabBarItem>
@@ -332,6 +405,7 @@ loading apod for &lt;date&gt;</string>
     </scenes>
     <resources>
         <image name="exclamationmark.triangle" catalog="system" width="128" height="112"/>
+        <image name="gearshape.fill" catalog="system" width="128" height="121"/>
         <image name="globe" catalog="system" width="128" height="121"/>
         <image name="heart.fill" catalog="system" width="128" height="109"/>
         <systemColor name="labelColor">
@@ -339,6 +413,9 @@ loading apod for &lt;date&gt;</string>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGrayColor">
+            <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
