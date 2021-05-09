@@ -14,7 +14,7 @@ class SettingsViewController: UIViewController {
 
     private var imageCacheSizeString = "-" {
         didSet {
-            self.settingsTableView.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .automatic)
+            self.settingsTableView.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .none)
         }
     }
 
@@ -25,6 +25,11 @@ class SettingsViewController: UIViewController {
     }
 
     override func viewDidAppear(_ animated: Bool) {
+        calculateImageDiskCacheSize()
+    }
+
+    private func calculateImageDiskCacheSize() {
+        imageCacheSizeString = "-"
         KingfisherManager.shared.cache.calculateDiskStorageSize { [weak self] (result) in
             switch result {
             case .success(let sizeBytes):
@@ -52,10 +57,24 @@ extension SettingsViewController: UITableViewDataSource {
             cell.title = "Clear all data"
             cell.subtitle = nil
         default:
-            fatalError("No more settings cell to dequeue for row index : \(indexPath.row)!")
+            fatalError("No settings cell to dequeue for row index : \(indexPath.row)!")
         }
         return cell
     }
 }
 
-extension SettingsViewController: UITableViewDelegate {}
+extension SettingsViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        switch indexPath.row {
+         case 0:
+            KingfisherManager.shared.cache.clearDiskCache { [weak self] in
+                self?.calculateImageDiskCacheSize()
+            }
+        case 1:
+            print("Did click clear all data")
+        default:
+            fatalError("No settings cell to dequeue for row index : \(indexPath.row)!")
+        }
+    }
+}
