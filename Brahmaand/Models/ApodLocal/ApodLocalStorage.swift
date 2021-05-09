@@ -111,7 +111,7 @@ DELETE FROM \(DbInfo.TableFavApods.name) WHERE \(DbInfo.TableFavApods.col_apod_d
     }
 
     func fetchFavoriteApods(completion: @escaping (Result<[Apod], Error>) -> ()) {
-        let fetchQuery = "SELECT * FROM \(DbInfo.TableApods.name) INNER JOIN \(DbInfo.TableFavApods.name) ON \(DbInfo.TableApods.col_date) = \(DbInfo.TableFavApods.col_apod_date)"
+        let fetchQuery = "SELECT * FROM \(DbInfo.TableApods.name) INNER JOIN \(DbInfo.TableFavApods.name) ON \(DbInfo.TableApods.col_date) = \(DbInfo.TableFavApods.col_apod_date) ORDER BY \(DbInfo.TableFavApods.col_apod_date) ASC"
         do {
             let results = try db.fetch(fetchString: fetchQuery, parameters: [])
             let apods = results.compactMap(apod(from:))
