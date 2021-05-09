@@ -52,6 +52,12 @@ extension ApodFavoritesContentViewController: UICollectionViewDataSource {
     }
 }
 
+extension ApodFavoritesContentViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let selectedApod = favoriteApods[indexPath.row]
+        ApodNavigator.shared.presentApodContentViewController(apod: selectedApod, presenter: self)
+    }
+}
 
 extension ApodFavoritesContentViewController: UICollectionViewDelegateFlowLayout {
 

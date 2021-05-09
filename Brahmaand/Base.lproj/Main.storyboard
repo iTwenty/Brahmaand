@@ -306,7 +306,7 @@
         <!--Daily-->
         <scene sceneID="68Q-XT-wY7">
             <objects>
-                <navigationController title="Daily" id="2JO-5q-G5u" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="ApodNavigationController" title="Daily" useStoryboardIdentifierAsRestorationIdentifier="YES" id="2JO-5q-G5u" customClass="ApodNavigationController" customModule="Brahmaand" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Daily" id="36D-qY-oWf">
                         <imageReference key="image" image="globe" catalog="system" symbolScale="default"/>
                     </tabBarItem>
@@ -314,9 +314,6 @@
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
-                    <connections>
-                        <segue destination="Lsa-tU-Qo2" kind="relationship" relationship="rootViewController" id="Tn6-Ua-62L"/>
-                    </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="039-3d-J5X" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

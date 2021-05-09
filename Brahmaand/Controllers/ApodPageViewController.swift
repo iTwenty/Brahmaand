@@ -49,7 +49,7 @@ class ApodPageViewController: UIPageViewController {
         return button
     }()
 
-    private var currentShownApodDate = Date() {
+    private var currentShownApodDate: Date {
         didSet {
             apodDateTitleButton.setTitle(currentShownApodDate.displayFormatted(), for: .normal)
         }
@@ -67,16 +67,39 @@ class ApodPageViewController: UIPageViewController {
     }
 
     private let apodFavoritesManager = ApodFactory.makeApodFavoritesManager()
+    private let initialFetchType: FetchType
+
+    static func fromStoryboard(initialFetchType: FetchType) -> ApodPageViewController {
+        let sb = UIStoryboard(name: "Main", bundle: nil)
+        return sb.instantiateViewController(identifier: "ApodPageViewController") { (coder) in
+            ApodPageViewController(initialFetchType: initialFetchType, coder: coder)
+        }
+    }
+
+    required init?(initialFetchType: FetchType, coder: NSCoder) {
+        self.initialFetchType = initialFetchType
+        currentShownApodDate = initialFetchType.date
+        super.init(coder: coder)
+    }
+
+    required init?(coder: NSCoder) {
+        self.initialFetchType = .before(date: Date())
+        currentShownApodDate = initialFetchType.date
+        super.init(coder: coder)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         dataSource = self
         delegate = self
-        let apodVc = ApodContainerViewController(fetchType: .before(date: currentShownApodDate))
+        let apodVc = ApodContainerViewController(fetchType: initialFetchType)
         setViewControllers([apodVc], direction: .reverse, animated: false, completion: nil)
         navigationItem.titleView = apodDateTitleButton
         navigationItem.rightBarButtonItem = favoriteButton
         apodDateTitleButton.setTitle(currentShownApodDate.displayFormatted(), for: .normal)
+        if case .single = initialFetchType {
+            apodDateTitleButton.isUserInteractionEnabled = false
+        }
         updateFavorite()
     }
 
@@ -124,6 +147,9 @@ extension ApodPageViewController: UIPageViewControllerDataSource {
 
     func pageViewController(_ pageViewController: UIPageViewController,
                             viewControllerBefore viewController: UIViewController) -> UIViewController? {
+        if case .single = initialFetchType {
+            return nil
+        }
         guard let currentDate = (viewController as? ApodContainerViewController)?.fetchType.date else {
             return nil
         }
@@ -140,6 +166,9 @@ extension ApodPageViewController: UIPageViewControllerDataSource {
 
     func pageViewController(_ pageViewController: UIPageViewController,
                             viewControllerAfter viewController: UIViewController) -> UIViewController? {
+        if case .single = initialFetchType {
+            return nil
+        }
         guard let currentDate = (viewController as? ApodContainerViewController)?.fetchType.date else {
             return nil
         }
