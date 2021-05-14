@@ -91,7 +91,7 @@
         <!--Apod Media View Controller-->
         <scene sceneID="z2g-uB-1zf">
             <objects>
-                <viewController storyboardIdentifier="ApodMediaViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="IVr-E5-KoQ" customClass="ApodMediaViewController" customModule="Brahmaand" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ApodMediaViewController" hidesBottomBarWhenPushed="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="IVr-E5-KoQ" customClass="ApodMediaViewController" customModule="Brahmaand" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="v67-Qc-cRC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

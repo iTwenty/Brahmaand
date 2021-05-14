@@ -12,13 +12,24 @@ class ApodMediaViewController: UIViewController {
 
     @IBOutlet weak var scrollView: ImageScrollView!
 
-    private var apod: Apod?
+    private var apod: Apod
+    private var initialImage: UIImage
 
-    static func fromStoryboard(apod: Apod) -> ApodMediaViewController {
+    static func fromStoryboard(apod: Apod, image: UIImage) -> ApodMediaViewController {
         let sb = UIStoryboard(name: "Main", bundle: .main)
-        let vc: ApodMediaViewController = sb.instantiateViewController(identifier: "ApodMediaViewController")
-        vc.apod = apod
-        return vc
+        return sb.instantiateViewController(identifier: "ApodMediaViewController") { (coder) in
+            return ApodMediaViewController(apod: apod, image: image, coder: coder)
+        }
+    }
+
+    required init?(apod: Apod, image: UIImage, coder: NSCoder) {
+        self.apod = apod
+        self.initialImage = image
+        super.init(coder: coder)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented. Use init(apod:image:coder:) instead")
     }
 
     lazy var progressButton: CircularProgressButton = {
@@ -47,11 +58,11 @@ class ApodMediaViewController: UIViewController {
 
         scrollView.setup()
         scrollView.imageScrollViewDelegate = self
+        showImage(initialImage)
 
-        guard let imgUrl = apod?.url else { return }
-        var finalUrl = imgUrl
+        var finalUrl = apod.url
         var hdImageInCache = false
-        if let hdurl = apod?.hdurl, hdImageCached(hdurl: hdurl) {
+        if let hdurl = apod.hdurl, hdImageCached(hdurl: hdurl) {
             finalUrl = hdurl
             hdImageInCache = true
         }
@@ -88,7 +99,7 @@ class ApodMediaViewController: UIViewController {
     }
 
     @objc func didClickDownloadHdButton(_ sender: Any) {
-        guard let hdurl = apod?.hdurl else { return }
+        guard let hdurl = apod.hdurl else { return }
         if hdImageDownloadTask != nil {
             print("HD download cancelled manually")
             hdImageDownloadTask?.cancel()

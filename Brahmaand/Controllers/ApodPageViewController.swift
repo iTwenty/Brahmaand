@@ -49,6 +49,8 @@ class ApodPageViewController: UIPageViewController {
         return button
     }()
 
+    var currentShownViewController: ApodContainerViewController?
+
     private var currentShownApodDate: Date {
         didSet {
             apodDateTitleButton.setTitle(currentShownApodDate.displayFormatted(), for: .normal)
@@ -94,6 +96,7 @@ class ApodPageViewController: UIPageViewController {
         delegate = self
         let apodVc = ApodContainerViewController(fetchType: initialFetchType)
         setViewControllers([apodVc], direction: .reverse, animated: false, completion: nil)
+        currentShownViewController = apodVc
         navigationItem.titleView = apodDateTitleButton
         navigationItem.rightBarButtonItem = favoriteButton
         apodDateTitleButton.setTitle(currentShownApodDate.displayFormatted(), for: .normal)
@@ -122,6 +125,7 @@ class ApodPageViewController: UIPageViewController {
             let apodVc = ApodContainerViewController(fetchType: .middle(date: selectedDate))
             setViewControllers([apodVc], direction: direction, animated: true, completion: nil)
             currentShownApodDate = selectedDate
+            currentShownViewController = apodVc
             updateFavorite()
         }
     }
@@ -200,10 +204,11 @@ extension ApodPageViewController: UIPageViewControllerDelegate {
 
     func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool,
                             previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
-        guard let date = (pageViewController.viewControllers?.first as? ApodContainerViewController)?.fetchType.date else {
+        guard let containerVC = (pageViewController.viewControllers?.first as? ApodContainerViewController) else {
             return
         }
-        currentShownApodDate = date
+        currentShownApodDate = containerVC.fetchType.date
+        currentShownViewController = containerVC
         updateFavorite()
     }
 }

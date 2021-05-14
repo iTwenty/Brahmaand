@@ -14,6 +14,12 @@ class ApodContainerViewController: UIViewController {
 
     var fetchType: FetchType
 
+    // Apod Media view for current shown apod. Used by ApodNavigationController for custom VC transitions
+    var apodMediaView: ApodMediaView? {
+        guard let contentVC = shownVc as? ApodContentViewController else { return nil }
+        return contentVC.apodMediaView
+    }
+
     init(fetchType: FetchType) {
         self.fetchType = fetchType
         super.init(nibName: nil, bundle: nil)
@@ -33,6 +39,7 @@ class ApodContainerViewController: UIViewController {
         shownVc?.view.removeFromSuperview()
         shownVc?.removeFromParent()
         let newVc = viewController(forState: state)
+        shownVc = newVc
         self.addChild(newVc)
         newVc.view.pin(to: view)
         newVc.didMove(toParent: self)

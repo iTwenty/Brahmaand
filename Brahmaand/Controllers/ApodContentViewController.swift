@@ -16,13 +16,22 @@ class ApodContentViewController: UIViewController {
 
     @IBOutlet weak var apodMediaViewHeightConstraint: NSLayoutConstraint!
 
-    var apod: Apod?
+    var apod: Apod
 
     static func fromStoryBoard(apod: Apod) -> ApodContentViewController {
         let sb = UIStoryboard(name: "Main", bundle: .main)
-        let vc: ApodContentViewController = sb.instantiateViewController(identifier: "ApodContentViewController")
-        vc.apod = apod
-        return vc
+        return sb.instantiateViewController(identifier: "ApodContentViewController") { (coder) in
+            ApodContentViewController(apod: apod, coder: coder)
+        }
+    }
+
+    required init?(apod: Apod, coder: NSCoder) {
+        self.apod = apod
+        super.init(coder: coder)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented. Use init(apod:coder:) instead.")
     }
 
     override func viewDidLoad() {
@@ -34,13 +43,12 @@ class ApodContentViewController: UIViewController {
     private func setupViews() {
         apodTitleLabel.text = nil
         apodExplanationTextView.text = nil
-        apodMediaView.imageTapAction = { [weak self] in
-            self?.showFullScreenImage()
+        apodMediaView.imageTapAction = { [weak self] (image) in
+            self?.showFullScreenImage(image: image)
         }
     }
 
     private func showApod() {
-        guard let apod = apod else { return }
         apodTitleLabel.text = apod.title
         apodExplanationTextView.text = apod.explanation
         switch apod.mediaType {
@@ -69,9 +77,8 @@ class ApodContentViewController: UIViewController {
         }
     }
 
-    private func showFullScreenImage() {
-        guard let apod = apod else { return }
-        ApodNavigator.shared.pushApodMediaViewController(apod: apod, presenter: self)
+    private func showFullScreenImage(image: UIImage) {
+        ApodNavigator.shared.pushApodMediaViewController(apod: apod, image: image, presenter: self)
     }
 
     private func setBackgroundColor(fromImage image: UIImage) {
