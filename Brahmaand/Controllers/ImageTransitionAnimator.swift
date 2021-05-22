@@ -9,7 +9,7 @@ import UIKit
 
 class ImageTransitionAnimator: NSObject, UIViewControllerAnimatedTransitioning {
 
-    private static let duration = 2.0 // seconds
+    private static let duration = 0.5 // seconds
 
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         Self.duration
@@ -23,32 +23,36 @@ class ImageTransitionAnimator: NSObject, UIViewControllerAnimatedTransitioning {
 
         guard let fromVC = transitionContext.viewController(forKey: .from) as? ApodPageViewController,
               let toVC = transitionContext.viewController(forKey: .to) as? ApodMediaViewController,
-              let toView = transitionContext.view(forKey: .to) else  {
+              let toView = toVC.view else  {
             transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
             return
         }
 
-        guard let fromMediaView = fromVC.currentShownViewController?.apodMediaView,
-              let fromMediaViewSnap = fromMediaView.snapshotView(afterScreenUpdates: false),
+        guard let fromImageView = fromVC.currentShownViewController?.apodMediaView,
               let toImageView = toVC.scrollView.zoomView else {
             transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
             return
         }
 
-        let fromMediaViewSnapInitialFrame = fromMediaView.convert(fromMediaView.bounds, to: nil)
-        let fromMediaViewSnapFinalFrame = toImageView.convert(toImageView.bounds, to: nil)
-
         let containerView = transitionContext.containerView
         containerView.addSubview(toView)
-        containerView.addSubview(fromMediaViewSnap)
-        fromMediaViewSnap.frame = fromMediaViewSnapInitialFrame
-        toView.alpha = 0
 
-        UIView.animate(withDuration: Self.duration) {
-            fromMediaViewSnap.frame = fromMediaViewSnapFinalFrame
-        } completion: { (finished) in
+        let transitionImageViewInitialFrame = fromImageView.convert(fromImageView.bounds, to: nil)
+        let transitionImageViewFinalFrame = toImageView.convert(toImageView.bounds, to: nil)
+
+        let transitionImageView = UIImageView(image: toImageView.image)
+        transitionImageView.contentMode = .scaleAspectFill
+        transitionImageView.frame = transitionImageViewInitialFrame
+        containerView.addSubview(transitionImageView)
+
+        toVC.scrollView.isHidden = true
+        toView.alpha = 0
+        UIView.animate(withDuration: Self.duration, delay: 0, options: [.transitionCrossDissolve]) {
+            transitionImageView.frame = transitionImageViewFinalFrame
             toView.alpha = 1
-            fromMediaViewSnap.removeFromSuperview()
+        } completion: { (finished) in
+            transitionImageView.removeFromSuperview()
+            toVC.scrollView.isHidden = false
             transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
         }
     }
