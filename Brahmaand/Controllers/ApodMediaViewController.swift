@@ -60,30 +60,25 @@ class ApodMediaViewController: UIViewController {
         scrollView.imageScrollViewDelegate = self
         showImage(initialImage)
 
-        var finalUrl = apod.url
-        var hdImageInCache = false
-        if let hdurl = apod.hdurl, hdImageCached(hdurl: hdurl) {
-            finalUrl = hdurl
-            hdImageInCache = true
+        guard let hdurl = apod.hdurl else {
+            navigationItem.rightBarButtonItems = [shareButton]
+            return
         }
-        configureNavigationBar(hdImageInCache: hdImageInCache)
-        KingfisherManager.shared.retrieveImage(with: finalUrl) { [weak self] (result) in
-            switch result {
-            case .success(let imageResult):
-                self?.showImage(imageResult.image)
-            case .failure(let error):
-                print(error.localizedDescription)
-            }
-        }
-    }
 
-    private func configureNavigationBar(hdImageInCache: Bool) {
-        navBarHidden = true
         navigationItem.rightBarButtonItems = [shareButton, downloadHdButton]
         progressButton.tintColor = downloadHdButton.tintColor
-        if hdImageInCache {
+    
+        if hdImageCached(hdurl: hdurl) {
             downloadHdButton.isEnabled = false
             progressButton.state = .completed
+            KingfisherManager.shared.retrieveImage(with: hdurl) { [weak self] (result) in
+                switch result {
+                case .success(let imageResult):
+                    self?.showImage(imageResult.image)
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
+            }
         } else {
             downloadHdButton.isEnabled = true
             progressButton.state = .initial
