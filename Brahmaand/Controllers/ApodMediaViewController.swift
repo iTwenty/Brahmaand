@@ -83,6 +83,7 @@ class ApodMediaViewController: UIViewController {
             downloadHdButton.isEnabled = true
             progressButton.state = .initial
         }
+        navBarHidden = true
     }
 
     private func showImage(_ image: UIImage) {

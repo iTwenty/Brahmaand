@@ -92,17 +92,18 @@ class ApodPageViewController: UIPageViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        dataSource = self
         delegate = self
         let apodVc = ApodContainerViewController(fetchType: initialFetchType)
         setViewControllers([apodVc], direction: .reverse, animated: false, completion: nil)
+        if case .single = initialFetchType {
+            apodDateTitleButton.isUserInteractionEnabled = false
+        } else {
+            dataSource = self
+        }
         currentShownViewController = apodVc
         navigationItem.titleView = apodDateTitleButton
         navigationItem.rightBarButtonItem = favoriteButton
         apodDateTitleButton.setTitle(currentShownApodDate.displayFormatted(), for: .normal)
-        if case .single = initialFetchType {
-            apodDateTitleButton.isUserInteractionEnabled = false
-        }
         updateFavorite()
     }
 

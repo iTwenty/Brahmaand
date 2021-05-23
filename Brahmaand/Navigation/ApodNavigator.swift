@@ -19,8 +19,8 @@ class ApodNavigator {
         presenter.navigationController?.pushViewController(mediaVc, animated: true)
     }
 
-    func presentApodContentViewController(apod: Apod, presenter: UIViewController) {
-        let navigationVc = ApodNavigationController.fromStoryboard(initialFetchType: .single(date: apod.date))
-        presenter.present(navigationVc, animated: true, completion: nil)
+    func pushApodContentViewController(apod: Apod, presenter: UIViewController) {
+        let navigationVc = ApodPageViewController.fromStoryboard(initialFetchType: .single(date: apod.date))
+        presenter.navigationController?.pushViewController(navigationVc, animated: true)
     }
 }

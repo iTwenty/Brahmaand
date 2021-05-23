@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="9g0-M6-dvI">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="9g0-M6-dvI">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
@@ -23,7 +23,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="zgL-pQ-WBz" userLabel="Apod Stack">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="548"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="473"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6IF-vI-Yan" customClass="ApodMediaView" customModule="Brahmaand" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="233"/>
@@ -33,16 +33,16 @@
                                                 </constraints>
                                             </view>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="hjx-l1-0cL" userLabel="Apod Details Stack">
-                                                <rect key="frame" x="0.0" y="241" width="414" height="307"/>
+                                                <rect key="frame" x="0.0" y="241" width="414" height="232"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="APOD Title" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2lG-JM-1Kz" userLabel="Apod Title">
-                                                        <rect key="frame" x="0.0" y="0.0" width="414" height="41"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="414" height="37"/>
                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" layoutMarginsFollowReadableWidth="YES" scrollEnabled="NO" editable="NO" textAlignment="natural" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sia-sH-Eic" userLabel="Apod Explanation">
-                                                        <rect key="frame" x="0.0" y="49" width="414" height="258"/>
+                                                        <rect key="frame" x="0.0" y="45" width="414" height="187"/>
                                                         <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                                         <color key="textColor" systemColor="labelColor"/>
                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
@@ -130,31 +130,13 @@
                     </tabBar>
                     <connections>
                         <segue destination="2JO-5q-G5u" kind="relationship" relationship="viewControllers" id="Qdn-QN-c25"/>
-                        <segue destination="wsd-jo-iXn" kind="relationship" relationship="viewControllers" id="M1M-ai-iqs"/>
-                        <segue destination="Wgc-b3-HGl" kind="relationship" relationship="viewControllers" id="ssM-pb-KmO"/>
+                        <segue destination="l2A-SW-gSA" kind="relationship" relationship="viewControllers" id="cIh-Jc-BOz"/>
+                        <segue destination="Wgc-b3-HGl" kind="relationship" relationship="viewControllers" id="cc3-1c-qTy"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IiY-nZ-5KV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-2312" y="1273"/>
-        </scene>
-        <!--Favorites-->
-        <scene sceneID="6MT-zr-Mfd">
-            <objects>
-                <viewController storyboardIdentifier="ApodFavoritesContainerViewController" title="Favorites" useStoryboardIdentifierAsRestorationIdentifier="YES" id="wsd-jo-iXn" customClass="ApodFavoritesContainerViewController" customModule="Brahmaand" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="YAz-Pv-Ojr">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="pFY-VN-Qfy"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Favorites" id="hwD-UJ-3WO">
-                        <imageReference key="image" image="heart.fill" catalog="system" symbolScale="default"/>
-                    </tabBarItem>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="9VX-AU-mt6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1193" y="1782"/>
         </scene>
         <!--Apod Favorites Content View Controller-->
         <scene sceneID="3B4-pU-HD9">
@@ -206,23 +188,23 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SettingsCell" id="cwc-Bu-xMA" customClass="SettingsCell" customModule="Brahmaand" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="64.5"/>
+                                        <rect key="frame" x="0.0" y="24.5" width="414" height="61"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="cwc-Bu-xMA" id="Tkx-9c-isv">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="64.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="61"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Plw-0t-1TC">
-                                                    <rect key="frame" x="20" y="20" width="374" height="24.5"/>
+                                                    <rect key="frame" x="20" y="20" width="374" height="21"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZcJ-mw-MGr" userLabel="Title">
-                                                            <rect key="frame" x="0.0" y="0.0" width="333" height="24.5"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="335" height="21"/>
                                                             <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BcC-rf-bee" userLabel="Subtitle">
-                                                            <rect key="frame" x="341" y="0.0" width="33" height="24.5"/>
+                                                            <rect key="frame" x="343" y="0.0" width="31" height="21"/>
                                                             <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
                                                             <color key="textColor" systemColor="systemGrayColor"/>
                                                             <nil key="highlightedColor"/>
@@ -274,16 +256,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="h5z-qh-zPa">
-                                <rect key="frame" x="39.5" y="422" width="335" height="62"/>
+                                <rect key="frame" x="64.5" y="425.5" width="285.5" height="55"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nothing to see here!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2dO-mv-fmi">
-                                        <rect key="frame" x="0.0" y="0.0" width="335" height="33.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="285.5" height="30"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Click the heart icon to add items to favorites" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cdQ-d4-axX">
-                                        <rect key="frame" x="0.0" y="41.5" width="335" height="20.5"/>
+                                        <rect key="frame" x="0.0" y="38" width="285.5" height="17"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -306,7 +288,7 @@
         <!--Daily-->
         <scene sceneID="68Q-XT-wY7">
             <objects>
-                <navigationController storyboardIdentifier="ApodNavigationController" title="Daily" useStoryboardIdentifierAsRestorationIdentifier="YES" id="2JO-5q-G5u" customClass="ApodNavigationController" customModule="Brahmaand" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="ApodNavigationController_Daily" title="Daily" useStoryboardIdentifierAsRestorationIdentifier="YES" id="2JO-5q-G5u" customClass="ApodNavigationController" customModule="Brahmaand" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Daily" id="36D-qY-oWf">
                         <imageReference key="image" image="globe" catalog="system" symbolScale="default"/>
                     </tabBarItem>
@@ -314,6 +296,9 @@
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
+                    <connections>
+                        <segue destination="Lsa-tU-Qo2" kind="relationship" relationship="rootViewController" id="Axm-jP-g5a"/>
+                    </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="039-3d-J5X" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -365,14 +350,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="1j9-XA-zb4">
-                                <rect key="frame" x="0.0" y="382" width="414" height="142"/>
+                                <rect key="frame" x="0.0" y="387" width="414" height="132"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="t9q-3C-qp7">
-                                        <rect key="frame" x="194.5" y="-1.5" width="25.5" height="33.5"/>
+                                        <rect key="frame" x="194.5" y="-1.5" width="25.5" height="33"/>
                                         <imageReference key="image" image="exclamationmark.triangle" catalog="system" symbolScale="large"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dg3-28-sBR">
-                                        <rect key="frame" x="115.5" y="39" width="183" height="65"/>
+                                        <rect key="frame" x="129.5" y="38.5" width="155.5" height="55.5"/>
                                         <string key="text">Something went wrong
 loading apod for &lt;date&gt;</string>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
@@ -380,7 +365,7 @@ loading apod for &lt;date&gt;</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yfw-M9-pb3">
-                                        <rect key="frame" x="188.5" y="112" width="37" height="30"/>
+                                        <rect key="frame" x="188.5" y="102" width="37" height="30"/>
                                         <state key="normal" title="Retry"/>
                                     </button>
                                 </subviews>
@@ -398,6 +383,41 @@ loading apod for &lt;date&gt;</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Xx-yi-AmD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="195" y="941"/>
+        </scene>
+        <!--Favorites-->
+        <scene sceneID="a3P-3y-ibE">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3c9-fE-dXN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <navigationController storyboardIdentifier="ApodNavigationController_Favorites" useStoryboardIdentifierAsRestorationIdentifier="YES" id="l2A-SW-gSA" customClass="ApodNavigationController" customModule="Brahmaand" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Favorites" id="5Qi-lb-gdW">
+                        <imageReference key="image" image="heart.fill" catalog="system" symbolScale="default"/>
+                    </tabBarItem>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="27v-qc-oSC">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="zAn-Rx-hOd" kind="relationship" relationship="rootViewController" id="EX6-0i-dVP"/>
+                    </connections>
+                </navigationController>
+            </objects>
+            <point key="canvasLocation" x="-1259" y="1782"/>
+        </scene>
+        <!--Apod Favorites Container View Controller-->
+        <scene sceneID="mwa-qj-bkh">
+            <objects>
+                <viewController storyboardIdentifier="ApodFavoritesContainerViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="zAn-Rx-hOd" customClass="ApodFavoritesContainerViewController" customModule="Brahmaand" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="0J0-HK-3vH">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="ITf-yq-hCv"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="99b-9j-lKg"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1lz-uu-xWf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-539" y="1782"/>
         </scene>
     </scenes>
     <resources>

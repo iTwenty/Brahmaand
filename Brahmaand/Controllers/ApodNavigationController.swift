@@ -9,29 +9,14 @@ import UIKit
 
 class ApodNavigationController: UINavigationController {
 
-    private let initialFetchType: FetchType
-
-    static func fromStoryboard(initialFetchType: FetchType) -> ApodNavigationController {
+    static func fromStoryboard() -> ApodNavigationController {
         let sb = UIStoryboard(name: "Main", bundle: nil)
-        return sb.instantiateViewController(identifier: "ApodNavigationController") { (coder) in
-            ApodNavigationController(initialFetchType: initialFetchType, coder: coder)
-        }
-    }
-
-    required init?(initialFetchType: FetchType, coder: NSCoder) {
-        self.initialFetchType = initialFetchType
-        super.init(coder: coder)
-    }
-
-    required init?(coder: NSCoder) {
-        self.initialFetchType = .before(date: Date())
-        super.init(coder: coder)
+        return sb.instantiateViewController(identifier: "ApodNavigationController")
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.delegate = self
-        setViewControllers([ApodPageViewController.fromStoryboard(initialFetchType: initialFetchType)], animated: true)
     }
 }
 

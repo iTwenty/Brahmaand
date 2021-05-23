@@ -82,7 +82,7 @@ class ApodContentViewController: UIViewController {
     }
 
     private func setBackgroundColor(fromImage image: UIImage) {
-        image.getColors { [weak self] (colors) in
+        image.getColors(quality: .low) { [weak self] (colors) in
             guard let colors = colors else { return }
             UIView.animate(withDuration: 0.1) {
                 self?.view.backgroundColor = colors.background

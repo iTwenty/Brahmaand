@@ -31,6 +31,18 @@ class ApodFavoritesContentViewController: UIViewController {
         apodFavoritesCollectionView.dataSource = self
         apodFavoritesCollectionView.delegate = self
     }
+
+    override func didMove(toParent parent: UIViewController?) {
+        super.didMove(toParent: parent)
+        // Need to access navigation item via parent since this VC is embedded inside fav container VC
+        parent?.navigationItem.title = "Favorites"
+        parent?.navigationItem.rightBarButtonItem = editButtonItem
+    }
+
+    override func setEditing(_ editing: Bool, animated: Bool) {
+        super.setEditing(editing, animated: animated)
+        // TODO : set collection view editing mode
+    }
 }
 
 
@@ -55,7 +67,7 @@ extension ApodFavoritesContentViewController: UICollectionViewDataSource {
 extension ApodFavoritesContentViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let selectedApod = favoriteApods[indexPath.row]
-        ApodNavigator.shared.presentApodContentViewController(apod: selectedApod, presenter: self)
+        ApodNavigator.shared.pushApodContentViewController(apod: selectedApod, presenter: self)
     }
 }
 

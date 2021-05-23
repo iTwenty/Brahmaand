@@ -37,8 +37,8 @@ class ImageTransitionAnimator: NSObject, UIViewControllerAnimatedTransitioning {
         let containerView = transitionContext.containerView
         containerView.addSubview(toView)
 
-        let transitionImageViewInitialFrame = fromImageView.convert(fromImageView.bounds, to: nil)
-        let transitionImageViewFinalFrame = toImageView.convert(toImageView.bounds, to: nil)
+        let transitionImageViewInitialFrame = fromImageView.convert(fromImageView.bounds, to: fromVC.view)
+        let transitionImageViewFinalFrame = toImageView.convert(toImageView.bounds, to: toView)
 
         let transitionImageView = UIImageView(image: toImageView.image)
         transitionImageView.contentMode = .scaleAspectFill
@@ -47,7 +47,7 @@ class ImageTransitionAnimator: NSObject, UIViewControllerAnimatedTransitioning {
 
         toVC.scrollView.isHidden = true
         toView.alpha = 0
-        UIView.animate(withDuration: Self.duration, delay: 0, options: [.transitionCrossDissolve]) {
+        UIView.animate(withDuration: Self.duration) {
             transitionImageView.frame = transitionImageViewFinalFrame
             toView.alpha = 1
         } completion: { (finished) in
