@@ -161,9 +161,9 @@
                         <viewLayoutGuide key="safeArea" id="nKl-vT-bbv"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="YWC-zB-923" secondAttribute="trailing" id="HrA-9d-TxA"/>
+                            <constraint firstItem="nKl-vT-bbv" firstAttribute="trailing" secondItem="YWC-zB-923" secondAttribute="trailing" id="HrA-9d-TxA"/>
                             <constraint firstItem="YWC-zB-923" firstAttribute="top" secondItem="Jzs-Xc-exO" secondAttribute="top" id="deI-TA-hSE"/>
-                            <constraint firstItem="YWC-zB-923" firstAttribute="leading" secondItem="Jzs-Xc-exO" secondAttribute="leading" id="ouk-2h-zAe"/>
+                            <constraint firstItem="YWC-zB-923" firstAttribute="leading" secondItem="nKl-vT-bbv" secondAttribute="leading" id="ouk-2h-zAe"/>
                             <constraint firstAttribute="bottom" secondItem="YWC-zB-923" secondAttribute="bottom" id="wHn-2c-zWM"/>
                         </constraints>
                     </view>
@@ -237,7 +237,7 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Settings" springLoaded="YES" id="tkl-D7-MQJ">
-                        <imageReference key="image" image="gearshape.fill" catalog="system" symbolScale="default"/>
+                        <imageReference key="image" image="gear" catalog="system" symbolScale="default"/>
                     </tabBarItem>
                     <connections>
                         <outlet property="settingsTableView" destination="Lrc-Kz-BK6" id="wIC-h9-7nx"/>
@@ -387,10 +387,9 @@ loading apod for &lt;date&gt;</string>
         <!--Favorites-->
         <scene sceneID="a3P-3y-ibE">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="3c9-fE-dXN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController storyboardIdentifier="ApodNavigationController_Favorites" useStoryboardIdentifierAsRestorationIdentifier="YES" id="l2A-SW-gSA" customClass="ApodNavigationController" customModule="Brahmaand" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Favorites" id="5Qi-lb-gdW">
-                        <imageReference key="image" image="heart.fill" catalog="system" symbolScale="default"/>
+                        <imageReference key="image" image="heart" catalog="system" symbolScale="default"/>
                     </tabBarItem>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="27v-qc-oSC">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -400,6 +399,7 @@ loading apod for &lt;date&gt;</string>
                         <segue destination="zAn-Rx-hOd" kind="relationship" relationship="rootViewController" id="EX6-0i-dVP"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3c9-fE-dXN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1259" y="1782"/>
         </scene>
@@ -422,9 +422,9 @@ loading apod for &lt;date&gt;</string>
     </scenes>
     <resources>
         <image name="exclamationmark.triangle" catalog="system" width="128" height="112"/>
-        <image name="gearshape.fill" catalog="system" width="128" height="121"/>
+        <image name="gear" catalog="system" width="128" height="119"/>
         <image name="globe" catalog="system" width="128" height="121"/>
-        <image name="heart.fill" catalog="system" width="128" height="109"/>
+        <image name="heart" catalog="system" width="128" height="109"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

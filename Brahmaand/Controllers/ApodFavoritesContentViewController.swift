@@ -17,6 +17,12 @@ class ApodFavoritesContentViewController: UIViewController {
         }
     }
 
+    private var itemsPerRow = 1 {
+        didSet {
+            apodFavoritesCollectionView.reloadData()
+        }
+    }
+
     static func fromStoryBoard(apods: [Apod]) -> ApodFavoritesContentViewController {
         let sb = UIStoryboard(name: "Main", bundle: .main)
         let vc: ApodFavoritesContentViewController = sb.instantiateViewController(identifier: "ApodFavoritesContentViewController")
@@ -30,18 +36,31 @@ class ApodFavoritesContentViewController: UIViewController {
         apodFavoritesCollectionView.register(apodCellNib, forCellWithReuseIdentifier: ApodCell.reuseIdentifier)
         apodFavoritesCollectionView.dataSource = self
         apodFavoritesCollectionView.delegate = self
+        updateItemsPerRow()
     }
 
     override func didMove(toParent parent: UIViewController?) {
         super.didMove(toParent: parent)
         // Need to access navigation item via parent since this VC is embedded inside fav container VC
         parent?.navigationItem.title = "Favorites"
-        parent?.navigationItem.rightBarButtonItem = editButtonItem
+        // parent?.navigationItem.rightBarButtonItem = editButtonItem
     }
 
     override func setEditing(_ editing: Bool, animated: Bool) {
         super.setEditing(editing, animated: animated)
         // TODO : set collection view editing mode
+    }
+
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        updateItemsPerRow()
+    }
+
+    private func updateItemsPerRow() {
+        if traitCollection.horizontalSizeClass == .compact {
+            itemsPerRow = 1
+        } else {
+            itemsPerRow = 2
+        }
     }
 }
 
@@ -76,10 +95,9 @@ extension ApodFavoritesContentViewController: UICollectionViewDelegateFlowLayout
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let numberOfItemsPerRow: CGFloat = 1
-        let spacing: CGFloat = 8
-        let totalSpacing = (2 * spacing) + ((numberOfItemsPerRow - 1) * spacing)
-        let width = (collectionView.bounds.width - totalSpacing) / numberOfItemsPerRow
+        let spacing = 8
+        let totalSpacing = (2 * spacing) + ((itemsPerRow - 1) * spacing)
+        let width = (Int(collectionView.bounds.width) - totalSpacing) / itemsPerRow
         return CGSize(width: width, height: width)
     }
 }
