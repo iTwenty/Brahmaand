@@ -28,8 +28,14 @@ extension ApodNavigationController: UINavigationControllerDelegate {
                               to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         switch operation {
         case .push: return pushAnimator(navigationController, fromVC: fromVC, toVC: toVC)
+        case .pop: return popAnimator(navigationController, fromVC: fromVC, toVC: toVC)
         default: return nil
         }
+    }
+
+    func navigationController(_ navigationController: UINavigationController,
+                              interactionControllerFor animationController: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
+        return nil
     }
 
     func pushAnimator(_ navVC: UINavigationController, fromVC: UIViewController,
@@ -37,6 +43,14 @@ extension ApodNavigationController: UINavigationControllerDelegate {
         guard fromVC is ApodPageViewController, toVC is ApodMediaViewController else {
             return nil
         }
-        return ImageTransitionAnimator()
+        return ImageTransitionAnimator(direction: .forward)
+    }
+
+    func popAnimator(_ navVC: UINavigationController, fromVC: UIViewController,
+                     toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        guard fromVC is ApodMediaViewController, toVC is ApodPageViewController else {
+            return nil
+        }
+        return ImageTransitionAnimator(direction: .back)
     }
 }

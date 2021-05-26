@@ -7,9 +7,19 @@
 
 import UIKit
 
+enum Direction {
+    case forward, back
+}
+
 class ImageTransitionAnimator: NSObject, UIViewControllerAnimatedTransitioning {
 
     private static let duration = 0.5 // seconds
+
+    private let direction: Direction
+
+    init(direction: Direction) {
+        self.direction = direction
+    }
 
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         Self.duration
@@ -21,6 +31,15 @@ class ImageTransitionAnimator: NSObject, UIViewControllerAnimatedTransitioning {
             return
         }
 
+        switch direction {
+        case .forward:
+            animateForward(using: transitionContext)
+        case .back:
+            animateBack(using: transitionContext)
+        }
+    }
+
+    private func animateForward(using transitionContext: UIViewControllerContextTransitioning) {
         guard let fromVC = transitionContext.viewController(forKey: .from) as? ApodPageViewController,
               let toVC = transitionContext.viewController(forKey: .to) as? ApodMediaViewController,
               let toView = toVC.view else  {
@@ -47,12 +66,49 @@ class ImageTransitionAnimator: NSObject, UIViewControllerAnimatedTransitioning {
 
         toVC.scrollView.isHidden = true
         toView.alpha = 0
+
         UIView.animate(withDuration: Self.duration) {
             transitionImageView.frame = transitionImageViewFinalFrame
             toView.alpha = 1
         } completion: { (finished) in
             transitionImageView.removeFromSuperview()
             toVC.scrollView.isHidden = false
+            transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
+        }
+    }
+
+    private func animateBack(using transitionContext: UIViewControllerContextTransitioning) {
+        guard let fromVC = transitionContext.viewController(forKey: .from) as? ApodMediaViewController,
+              let toVC = transitionContext.viewController(forKey: .to) as? ApodPageViewController,
+              let toView = toVC.view else  {
+            transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
+            return
+        }
+
+        guard let fromImageView = fromVC.scrollView.zoomView,
+              let toImageView = toVC.currentShownViewController?.apodMediaView else {
+            transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
+            return
+        }
+
+        let containerView = transitionContext.containerView
+        containerView.addSubview(toView)
+
+        let transitionImageViewInitialFrame = fromImageView.convert(fromImageView.bounds, to: fromVC.view)
+        let transitionImageViewFinalFrame = toImageView.convert(toImageView.bounds, to: toView)
+
+        let transitionImageView = UIImageView(image: toImageView.imageView.image)
+        transitionImageView.contentMode = .scaleAspectFill
+        transitionImageView.frame = transitionImageViewInitialFrame
+        containerView.addSubview(transitionImageView)
+
+        toView.alpha = 0
+
+        UIView.animate(withDuration: Self.duration) {
+            transitionImageView.frame = transitionImageViewFinalFrame
+            toView.alpha = 1
+        } completion: { (finished) in
+            transitionImageView.removeFromSuperview()
             transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
         }
     }
