@@ -35,7 +35,10 @@ extension ApodNavigationController: UINavigationControllerDelegate {
 
     func navigationController(_ navigationController: UINavigationController,
                               interactionControllerFor animationController: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
-        return nil
+        guard let imageTransionAnimator = animationController as? ImageTransitionAnimator, imageTransionAnimator.interactive else {
+            return nil
+        }
+        return ImageTransitionInteractionController()
     }
 
     func pushAnimator(_ navVC: UINavigationController, fromVC: UIViewController,

@@ -15,10 +15,13 @@ class ImageTransitionAnimator: NSObject, UIViewControllerAnimatedTransitioning {
 
     private static let duration = 0.5 // seconds
 
+    let interactive: Bool
     private let direction: Direction
 
     init(direction: Direction) {
         self.direction = direction
+        // interactive = (direction == .back)
+        interactive = false
     }
 
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
